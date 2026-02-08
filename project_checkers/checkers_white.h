@@ -25,155 +25,137 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
     int y_IN{}, y_OU{};
     int number{};
     char x_test{},y_test{};
-    int m{ 5 }, n{ 0 };
-    while (m > n)
+
+    //if (white == true)
+    //{
+    if (check == 0)
     {
-        if (white == true)
+        cout << "\nВы играете белыми (снизу)" << endl;
+        for (int i = 0; i < 8; i += 2)
+            size_pole[5][i] = motion;
+
+        print_pole(size, size_pole);
+
+        cout << "Ход белыми." << endl;
+
+        cout << '\n' << "Выберете шашку: ";
+        cin >> y_test;
+        cin >> x_test;
+        for (int i = 1; x_IN <= 8; i++)
         {
-        /*if (check == 0)
-        {*/
-
-            cout << "\nВы играете белыми (снизу)" << endl;
-            for (int i = 0; i < 8; i += 2)
-                size_pole[5][i] = motion;
-
-            print_pole(size, size_pole);
-
-            cout << '\n' << "Выберете шашку: ";
-            cin >> y_test;
-            cin >> x_test;
-
-            for (int i = 1; x_IN <= 8; i++)
+            if (x_test == (i + 48))
             {
-                if (x_test == (i + 48))
-                {
-                    x_IN = i;
-                    x_IN -= 1;
-                    //cout << x_IN << endl;
-                    break;
-                }
+                x_IN = i;
+                x_IN -= 1;
+                break;
             }
-            for (int i = 1; y_IN <= 8; i++)
-            {
-                if (y_test == (i + 96))
-                {
-                    y_IN = i;
-                    y_IN -= 1;
-                    //cout << y_IN << endl;
-                    break;
-                }
-            }
-            cout << '\n' << "Выберете куда сходить: ";
-            cin >> y_test;
-            cin >> x_test;
-            for (int i = 1; x_OU <= 8; i++)
-            {
-                if (x_test == (i + 48))
-                {
-                    x_OU = i;
-                    x_OU -= 1;
-                    //cout << x_OU << endl;
-                    break;
-                }
-            }
-            for (int i = 1; y_OU <= 8; i++)
-            {
-                if (y_test == (i + 96))
-                {
-                    y_OU = i;
-                    y_OU -= 1;
-                    //cout << y_OU << endl;
-                    break;
-                }
-            }
-
-            for (int i = 0, k = 0; i < 8; i += 2, k++)
-                size_pole[5][i] = white_checkers[k];
-            if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
-            {
-                swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-                size_pole[x_OU][y_OU] = white_checkers[0];
-                print_pole(size, size_pole);
-            }
-            else
-                cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
-        /*}*/
-        white = false;
-        n++;
         }
-        else if (white == false)
+        for (int i = 1; y_IN <= 8; i++)
         {
-            /*if (check == 1)
-            {*/
-
-            cout << "Вы играете чёрными (сверху)" << endl;
-            for (int i = 1; i < 8; i += 2)
-                size_pole[2][i] = motion;
-
-            print_pole(size, size_pole);
-
-            cout << '\n' << "Выберете шашку: ";
-            cin >> y_test;
-            cin >> x_test;
-
-            for (int i = 1; x_IN <= 8; i++)
+            if (y_test == (i + 96))
             {
-                if (x_test == (i + 48))
-                {
-                    x_IN = i;
-                    x_IN -= 1;
-                    //cout << x_IN << endl;
-                    break;
-                }
+                y_IN = i;
+                y_IN -= 1;
+                break;
             }
-            for (int i = 1; y_IN <= 8; i++)
-            {
-                if (y_test == (i + 96))
-                {
-                    y_IN = i;
-                    y_IN -= 1;
-                    //cout << y_IN << endl;
-                    break;
-                }
-            }
-            cout << '\n' << "Выберете куда сходить: ";
-            cin >> y_test;
-            cin >> x_test;
-            for (int i = 1; x_OU <= 8; i++)
-            {
-                if (x_test == (i + 48))
-                {
-                    x_OU = i;
-                    x_OU -= 1;
-                    //cout << x_OU << endl;
-                    break;
-                }
-            }
-            for (int i = 1; y_OU <= 8; i++)
-            {
-                if (y_test == (i + 96))
-                {
-                    y_OU = i;
-                    y_OU -= 1;
-                    //cout << y_OU << endl;
-                    break;
-                }
-            }
-
-            for (int i = 1, k = 0; i < 8; i += 2, k++)
-                size_pole[2][i] = black_checkers[k];
-            if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
-            {
-                swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-                size_pole[x_OU][y_OU] = black_checkers[0];
-                print_pole(size, size_pole);
-            }
-            else
-                cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
-        /*}*/
-        white = true;
-        n++;
         }
+
+        cout << '\n' << "Выберете куда сходить: ";
+        cin >> y_test;
+        cin >> x_test;
+        for (int i = 1; x_OU <= 8; i++)
+        {
+            if (x_test == (i + 48))
+            {
+                x_OU = i;
+                x_OU -= 1;
+                break;
+            }
+        }
+        for (int i = 1; y_OU <= 8; i++)
+        {
+            if (y_test == (i + 96))
+            {
+                y_OU = i;
+                y_OU -= 1;
+                break;
+            }
+        }
+
+        for (int i = 0, k = 0; i < 8; i += 2, k++)
+            size_pole[5][i] = white_checkers[k];
+        if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
+        {
+            swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+            size_pole[x_OU][y_OU] = white_checkers[0];
+            print_pole(size, size_pole);
+        }
+        else
+            cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
     }
-        
+    else if (check == 1)
+    {
+        cout << "\nВы играете белыми (сверху)" << endl;
+        for (int i = 1; i < 8; i += 2)
+            size_pole[2][i] = motion;
+
+        print_pole(size, size_pole);
+
+        cout << "Ход белыми." << endl;
+
+        cout << '\n' << "Выберете шашку: ";
+        cin >> y_test;
+        cin >> x_test;
+        for (int i = 1; x_IN <= 8; i++)
+        {
+            if (x_test == (i + 48))
+            {
+                x_IN = i;
+                x_IN -= 1;
+                break;
+            }
+        }
+        for (int i = 1; y_IN <= 8; i++)
+        {
+            if (y_test == (i + 96))
+            {
+                y_IN = i;
+                y_IN -= 1;
+                break;
+            }
+        }
+
+        cout << '\n' << "Выберете куда сходить: ";
+        cin >> y_test;
+        cin >> x_test;
+        for (int i = 1; x_OU <= 8; i++)
+        {
+            if (x_test == (i + 48))
+            {
+                x_OU = i;
+                x_OU -= 1;
+                break;
+            }
+        }
+        for (int i = 1; y_OU <= 8; i++)
+        {
+            if (y_test == (i + 96))
+            {
+                y_OU = i;
+                y_OU -= 1;
+                break;
+            }
+        }
+
+        for (int i = 1, k = 0; i < 8; i += 2, k++)
+            size_pole[2][i] = white_checkers[k];
+        if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
+        {
+            swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+            size_pole[x_OU][y_OU] = white_checkers[0];
+            print_pole(size, size_pole);
+        }
+        else
+            cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
+    }
 }

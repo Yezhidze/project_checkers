@@ -7,21 +7,22 @@ using namespace std;
 void print_pole(int size, char size_pole[][8]);
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
 void motion_white_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty);         // проверка хода белых шашек по правилу первого хода
+void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty);
 char* white_checkers();
 
 
 void checkers_pole()
 {
-    const char empty = ' ';     // Пустое поле
+    const char empty = ' ';                                                 // Пустое поле
     static const int size{ 8 };
     char size_pole[size][size] {};
     
 
-    for (int i = 0; i < size; i++) // длина
+    for (int i = 0; i < size; i++)                                          // длина
     {
-        for (int j = 0; j < size; j++) // столбцы
+        for (int j = 0; j < size; j++)                                      // столбцы
         {
-            size_pole[i][j] = empty;    // Заполняем доску пустыми клетками
+            size_pole[i][j] = empty;                                        // Заполняем доску пустыми клетками
         }
     }
 
@@ -35,28 +36,33 @@ void checkers_pole()
     if (check == 0)
     {
         motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
-        cout << endl;
-        print_pole(size, size_pole);
+        motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
+    }
+    else if (check == 1)
+    {
+        motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
+        motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
+
     }
 }
 
 void print_pole(int size, char size_pole[][8])                                                                 // вывод поля в консоль
 { 
-    //system("cls");
+    system("cls");
     cout << "Шашочная доска!" << endl;
-    cout << "   a  b  c  d  e  f  g  h\n";  //Рисую отметки по краю доски(кординаты если по русски :D )
-    for (int row = 0, numb = 0; row < size; row++, numb++)  // Чередуем цвет фона в зависимости от позиции
+    cout << "   a  b  c  d  e  f  g  h\n";                                  //Рисую отметки по краю доски(кординаты если по русски :D )
+    for (int row = 0, numb = 0; row < size; row++, numb++)                  // Чередуем цвет фона в зависимости от позиции
     {
         cout << (numb + 1) << " ";
         for (int col = 0; col < size; col++)
         {
             if ((row + col) % 2 == 0) 
             {
-                cout << "\033[107m " << size_pole[row][col] << " \033[0m"; // Белый фон
+                cout << "\033[107m " << size_pole[row][col] << " \033[0m";  // Белый фон
             }
             else 
             {
-                cout << "\033[40m " << size_pole[row][col] << " \033[0m";  // Чёрный фон
+                cout << "\033[40m " << size_pole[row][col] << " \033[0m";   // Чёрный фон
             }
         }
         cout << (numb + 1) << "\n";
@@ -66,7 +72,7 @@ void print_pole(int size, char size_pole[][8])                                  
     cout << "• - белая пешка." << endl;
     cout << "° - чёрная пешка." << endl;
     cout << "Где [i][j] - координаты шашек и полей." << endl;
-    cout << "Ї - шашки, которыми можно сходить." << endl;
+    cout << "Ї - шашки, которыми можно сходить.\n" << endl;
 }
 
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers)
