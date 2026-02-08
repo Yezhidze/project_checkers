@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DAMKA.cpp" />
     <ClCompile Include="project_checkers.cpp" />
   </ItemGroup>
   <ItemGroup>
