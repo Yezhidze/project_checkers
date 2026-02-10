@@ -1,10 +1,12 @@
 ﻿#pragma once
 #include "pole_checkers.h"
+#include "logic_game.h"
 using namespace std;
 
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
 void checkers_pole();
 void print_pole(int size, char size_pole[][8]);
+void check_to_go(char size_pole[][8], char check, int control);
 
 char* white_checkers()
 {
@@ -18,7 +20,6 @@ char* white_checkers()
 }
 void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty)            // проверка хода белых шашек по правилу первого хода
 {
-    int a{ 0 }, b{ 1 }, c{ 2 }, d{ 3 }, e{ 4 }, f{ 5 }, g{ 6 }, h{ 7 };
     bool white{ true };
     char motion = 'Ї';                                                                                                                // возможные ходы
     int x_IN{}, x_OU{};                                                                                                               // координаты
@@ -29,10 +30,8 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
     if (check == 0)
     {
         cout << "\nВы играете белыми (снизу)" << endl;
-        for (int i = 0; i < 8; i += 2)
-            size_pole[5][i] = motion;
 
-        print_pole(size, size_pole);
+        check_to_go(size_pole, '•', 1);
 
         cout << "Ход белыми." << endl;
 
@@ -80,8 +79,8 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             }
         }
 
-        for (int i = 0, k = 0; i < 8; i += 2, k++)
-            size_pole[5][i] = white_checkers[k];
+        check_to_go(size_pole, '•', 2);
+
         if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
         {
             swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);

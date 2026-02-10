@@ -46,7 +46,7 @@ void checkers_pole()
 void print_pole(int size, char size_pole[][8])                                                                 // вывод поля в консоль
 { 
     system("cls");
-    cout << "Шашочная доска!" << endl;
+    cout << "Шашечная доска!" << endl;
     cout << "   a  b  c  d  e  f  g  h\n";                                  //Рисую отметки по краю доски(кординаты если по русски :D )
     for (int row = 0, numb = 0; row < size; row++, numb++)                  // Чередуем цвет фона в зависимости от позиции
     {
