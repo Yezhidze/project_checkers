@@ -69,70 +69,69 @@
 //                cout << '\n' << "Ðÿäîì âàðã ";
 //                neighboring_cell = 1;
 //            }
-//            bool check_l = true;
-//            while (check_l == true)
-//            {
-//                cout << '\n' << "Âûáåðåòå êóäà ñõîäèòü: ";
-//                cin >> y_test;
-//                cin >> x_test;
-//                for (int i = 1; x_OU <= 8; i++)
-//                {
-//                    if (x_test == (i + 48))
-//                    {
-//                        x_OU = i;
-//                        x_OU -= 1;
-//                        cout << x_OU << endl;
-//                        break;
-//                    }
-//                }
-//                for (int i = 1; y_OU <= 8; i++)
-//                {
-//                    if (y_test == (i + 96))
-//                    {
-//                        y_OU = i;
-//                        y_OU -= 1;
-//                        cout << y_OU << endl;
-//                        break;
-//                    }
-//                }
-//
-//                for (int i = 0, k = 0; i < 8; i += 2, k++)
-//                    size_pole[5][i] = white_checkers[k];
-//
-//                if (neighboring_cell == 0)
-//                {
-//                    if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
-//                    {
-//
-//                        swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-//                        size_pole[x_OU][y_OU] = white_checkers[0];
-//                        print_pole(size, size_pole);
-//                        check_l = false;
-//                    }
-//                    else
-//                        cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;
-//                }
-//                else if (neighboring_cell == 1)
-//                {
-//                    int xs{}, ys{};
-//                    if (x_IN > x_OU)
-//                        xs = x_IN - 1;
-//                    else
-//                        xs = x_OU - 1;
-//                    if (y_IN > y_OU)
-//                        ys = y_IN - 1;
-//                    else
-//                        ys = y_OU - 1;
-//                    if (size_pole[xs][ys] == '°')
-//                    {
-//                        size_pole[xs][ys] = ' ';
-//                        swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-//                        check_l = false;
-//                    }
-//                    else
-//                        cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;
-//                }
-//            }
+            //bool check_l = true;
+            //while (check_l == true)
+            //{
+            //    cout << '\n' << "Âûáåðåòå êóäà ñõîäèòü: ";
+            //    cin >> y_test;
+            //    cin >> x_test;
+            //    for (int i = 1; x_OU <= 8; i++)
+            //    {
+            //        if (x_test == (i + 48))
+            //        {
+            //            x_OU = i;
+            //            x_OU -= 1;
+            //            cout << x_OU << endl;
+            //            break;
+            //        }
+            //    }
+            //    for (int i = 1; y_OU <= 8; i++)
+            //    {
+            //        if (y_test == (i + 96))
+            //        {
+            //            y_OU = i;
+            //            y_OU -= 1;
+            //            cout << y_OU << endl;
+            //            break;
+            //        }
+            //    }
+
+            //    check_to_go(size_pole, '•', 2);
+
+            //    if (neighboring_cell == 0)
+            //    {
+            //        if ((x_OU - x_IN == 1 || x_OU - x_IN == -1) && (y_OU - y_IN == 1 || y_OU - y_IN == -1))
+            //        {
+
+            //            swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+            //            size_pole[x_OU][y_OU] = white_checkers[0];
+            //            print_pole(size, size_pole);
+            //            check_l = false;
+            //        }
+            //        else
+            //            cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;
+            //    }
+            //    else if (neighboring_cell == 1)
+            //    {
+            //        int xs{}, ys{};
+            //        if (x_IN > x_OU)
+            //            xs = x_IN - 1;
+            //        else
+            //            xs = x_OU - 1;
+            //        if (y_IN > y_OU)
+            //            ys = y_IN - 1;
+            //        else
+            //            ys = y_OU - 1;
+            //        if (size_pole[xs][ys] == '°')
+            //        {
+            //            size_pole[xs][ys] = ' ';
+            //            swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+            //            check_l = false;
+            //        }
+            //        else
+            //            cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;
+            //    }
+            //}
 //        }
 //        white = false;
 //    }
