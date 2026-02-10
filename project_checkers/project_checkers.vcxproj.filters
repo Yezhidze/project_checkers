@@ -21,6 +21,9 @@
     <ClCompile Include="DAMKA.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="ПОЕДАНИЕ_КИРИЛЛА.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pole_checkers.h">
