@@ -6,13 +6,12 @@ int checkers_position(int size, char size_pole[][8], char* white_checkers, char*
 void checkers_pole();
 void print_pole(int size, char size_pole[][8]);
 
-char* checkers_black()
+char* black_checkers()
 {
     static const int size_black{ 12 };
     static char black_checkers[size_black]{};
 
     for (int i = 0; i < size_black; i++)
-        //black_checkers[i] = 'B';
         black_checkers[i] = '°';
 
     return black_checkers;

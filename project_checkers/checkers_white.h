@@ -26,8 +26,6 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
     int number{};
     char x_test{},y_test{};
 
-    //if (white == true)
-    //{
     if (check == 0)
     {
         cout << "\nВы играете белыми (снизу)" << endl;
