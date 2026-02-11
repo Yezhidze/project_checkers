@@ -75,7 +75,13 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
         }
         xy_test = true;
         int neighboring_cell = 0;
-        if (size_pole[x_IN - 1][y_IN + 1] == 'Х' || size_pole[x_IN - 1][y_IN - 1] == 'Х')
+
+        if ((size_pole[x_IN + 1][y_IN + 1] == 'Х') &&
+            (size_pole[x_IN + 2][y_IN + 2] == ' ') &&
+            ((y_IN + 2) < 9) && ((x_IN + 2) < 8) ||
+            (size_pole[x_IN + 1][y_IN - 1] == 'Х') &&
+            (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
+            ((y_IN - 2) >= 0) && ((x_IN + 2) < 8))
         {
             cout << '\n' << "–€дом варг ";
             neighboring_cell = 1;
@@ -139,7 +145,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     ys = y_IN - 1;
                 else
                     ys = y_OU - 1;
-                if (size_pole[xs][ys] == '∞')
+                if (size_pole[xs][ys] == 'Х')
                 {
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
@@ -193,7 +199,12 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
         }
         xy_test = true;
         int neighboring_cell = 0;
-        if (size_pole[x_IN - 1][y_IN + 1] == '∞' || size_pole[x_IN - 1][y_IN - 1] == '∞')
+        if ((size_pole[x_IN - 1][y_IN + 1] == 'Х') &&
+            (size_pole[x_IN - 2][y_IN + 2] == ' ') &&
+            ((y_IN + 2) < 9) && ((x_IN - 2) >=0 ) ||
+            (size_pole[x_IN - 1][y_IN - 1] == 'Х') &&
+            (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
+            ((y_IN - 2) >= 0) && ((x_IN - 2) >= 0))
         {
             cout << '\n' << "–€дом варг ";
             neighboring_cell = 1;
@@ -232,7 +243,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     xy_test = true;
             }
 
-            check_to_go(size_pole, '∞', 2);
+            check_to_go(size_pole, 'Х', 2);
 
             if (neighboring_cell == 0)
             {

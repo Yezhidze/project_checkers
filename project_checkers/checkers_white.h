@@ -76,7 +76,12 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         }
         xy_test = true;
         int neighboring_cell = 0;
-        if (size_pole[x_IN - 1][y_IN + 1] == '°' || size_pole[x_IN - 1][y_IN - 1] == '°')
+        if ((size_pole[x_IN - 1][y_IN + 1] == '°') &&
+            (size_pole[x_IN - 2][y_IN + 2] == ' ') &&
+            ((y_IN + 2) < 9) && ((x_IN - 2) >= 0) ||
+            (size_pole[x_IN - 1][y_IN - 1] == '°') &&
+            (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
+            ((y_IN - 2) >= 0) && ((x_IN - 2) >=0))
         {
             cout << '\n' << "Рядом варг ";
             neighboring_cell = 1;
@@ -195,7 +200,12 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         }
         xy_test = true;
         int neighboring_cell = 0;
-        if (size_pole[x_IN - 1][y_IN + 1] == '°' || size_pole[x_IN - 1][y_IN - 1] == '°')
+        if ((size_pole[x_IN + 1][y_IN + 1] == '°') &&
+            (size_pole[x_IN + 2][y_IN + 2] == ' ') &&
+            ((y_IN + 2) < 9) && ((x_IN + 2) <= 8) ||
+            (size_pole[x_IN + 1][y_IN - 1] == '°') &&
+            (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
+            ((y_IN - 2) >= 0) && ((x_IN + 2) <= 8))
         {
             cout << '\n' << "Рядом варг ";
             neighboring_cell = 1;
@@ -269,7 +279,6 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 else
                     cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
             }
-
         }
     }
 }

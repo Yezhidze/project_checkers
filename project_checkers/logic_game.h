@@ -32,13 +32,16 @@ void white_to_go(char size_pole[][8], char check)
 		{
 			if (size_pole[i][j] == check)
 			{
-				
-				if ((size_pole[i - 1][j + 1] == '∞') && (size_pole[i - 2][j + 2] == ' ') && ((i - 2 >= 0) || (j + 2 <  0))) // неверное условие, добить и
-				{
-					size_pole[i][j] = motion;
-					eating++;
-				}
-				else if ((size_pole[i - 1][j - 1] == '∞') && (size_pole[i - 2][j - 2] == ' ') && ((i - 2 != 0) || (j - 2 != 0)))// неверное условие, добить
+                if ((size_pole[i - 1][j + 1] == '∞') &&
+                    (size_pole[i - 2][j + 2] == ' ') &&
+                    ((j + 2) < 8) && ((i - 2) >= 0)) // код исправил  »–»ЋЋ проверь!!!
+                {
+                    size_pole[i][j] = motion;
+                    eating++;
+                }
+				else if ((size_pole[i - 1][j - 1] == '∞') &&
+                         (size_pole[i - 2][j - 2] == ' ') &&
+                           ((j - 2) >= 0) && ((i - 2) >= 0))
 				{
 					size_pole[i][j] = motion;
 					eating++;
@@ -85,12 +88,12 @@ void black_to_go(char size_pole[][8], char check)
 		{
 			if (size_pole[i][j] == check)
 			{
-				if ((size_pole[i + 1][j + 1] == 'Х') && (size_pole[i + 2][j + 2] == ' ') && ((i + 2 != 0) || (j + 2 != 0)))// неверное условие, добить
+				if ((size_pole[i + 1][j + 1] == 'Х') && (size_pole[i + 2][j + 2] == ' ') && ((j + 2) < 9) && (i + 2) <= 7)// код исправил  »–»ЋЋ проверь!!!
 				{
 					size_pole[i][j] = motion;
 					eating++;
 				}
-				else if ((size_pole[i + 1][j - 1] == 'Х') && (size_pole[i + 2][j - 2] == ' ') && ((i + 2 != 0) || (j - 2 != 0)))// неверное условие, добить
+				else if ((size_pole[i + 1][j - 1] == 'Х') && (size_pole[i + 2][j - 2] == ' ') && ((j - 2) >= 0) && (i + 2) <= 7)
 				{
 					size_pole[i][j] = motion;
 					eating++;
