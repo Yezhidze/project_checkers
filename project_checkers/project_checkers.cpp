@@ -18,7 +18,7 @@ using namespace std;
 
 int main()
 {
-    showAsciiArt();
+    //showAsciiArt();
 
     setlocale(LC_ALL, "ru");
     SetConsoleOutputCP(1251);

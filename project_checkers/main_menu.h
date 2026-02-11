@@ -65,13 +65,13 @@ void showAsciiArt() {
     wcout << L"\n\n";
     for (int i = 0; i < 19; i++)
     {
-        wcout << L"\t\t" << art_lines[i] << endl;
+        wcout << L"\t\t\t" << art_lines[i] << endl;
     }
    wcout << L"\n\n";
     setlocale(LC_ALL, "ru");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    cout << "\t\t              Нажмите Enter для продолжения...";
+    cout << "\t\t\t\t\tНажмите Enter для продолжения...";
     cin.get();
     system("cls");
     menu();
