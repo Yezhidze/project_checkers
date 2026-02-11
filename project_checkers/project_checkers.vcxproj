@@ -138,6 +138,7 @@
     <ClInclude Include="checkers_white.h" />
     <ClInclude Include="logic_game.h" />
     <ClInclude Include="pole_checkers.h" />
+    <ClInclude Include="Муню .h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
