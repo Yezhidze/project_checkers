@@ -2,7 +2,7 @@
 #include "pole_checkers.h"
 #include "logic_game.h"
 using namespace std;
-int eat{ 0 };
+
 
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
 void checkers_pole();
@@ -19,6 +19,8 @@ char* white_checkers()
 
     return white_checkers;
 }
+
+int eat{ 0 };
 void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty)            // проверка хода белых шашек по правилу первого хода
 {
     bool white{ true };
