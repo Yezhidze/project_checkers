@@ -32,7 +32,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
 
     if (check == 0)
     {
-        cout << "\nВы играете белыми (снизу)" << endl;
+        cout << "\n\t\t\t\t\t Вы играете белыми (снизу)" << endl;
 
         if (eat1 == 1)
         {
@@ -41,12 +41,12 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         }
         check_to_go(size_pole, '•', 1);
 
-        cout << "Ход белыми." << endl;
+        cout << "\t\t\t\t\t Ход белыми." << endl;
 
         bool xy_test = true;
         while(xy_test)
         {
-            cout << '\n' << "Выберете шашку: ";
+            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
             for (int i = 1; x_IN <= 8; i++)
@@ -83,7 +83,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN - 2) >=0))
         {
-            cout << '\n' << "Рядом варг ";
+            cout << '\n' << "\t\t\t\t\t Рядом варг ";
             neighboring_cell = 1;
         }
         bool check_l = true;
@@ -91,7 +91,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         {
             while (xy_test)
             {
-                cout << '\n' << "Выберете куда сходить: ";
+                cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                 cin >> y_test;
                 cin >> x_test;
                 for (int i = 1; x_OU <= 8; i++)
@@ -159,18 +159,18 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
     }
     else if (check == 1)
     {
-        cout << "\nВы играете белыми (сверху)" << endl;
+        cout << "\n\t\t\t\t\t Вы играете белыми (сверху)" << endl;
         for (int i = 1; i < 8; i += 2)
             size_pole[2][i] = motion;
 
         print_pole(size, size_pole);
 
-        cout << "Ход белыми." << endl;
+        cout << "\t\t\t\t\t Ход белыми." << endl;
 
         bool xy_test = true;
         while (xy_test)
         {
-            cout << '\n' << "Выберете шашку: ";
+            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
             for (int i = 1; x_IN <= 8; i++)
@@ -207,7 +207,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN + 2) <= 8))
         {
-            cout << '\n' << "Рядом варг ";
+            cout << '\n' << "\t\t\t\t\t Рядом варг ";
             neighboring_cell = 1;
         }
         bool check_l = true;
@@ -215,7 +215,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         {
             while (xy_test)
             {
-                cout << '\n' << "Выберете куда сходить: ";
+                cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                 cin >> y_test;
                 cin >> x_test;
                 for (int i = 1; x_OU <= 8; i++)

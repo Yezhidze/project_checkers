@@ -30,7 +30,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
 
     if (check == 0)
     {
-        cout << "Вы играете чёрными (сверху)" << endl;
+        cout << "\t\t\t\t\t Вы играете чёрными (сверху)" << endl;
 
         if (eat2 == 1)
         {
@@ -40,12 +40,12 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
 
         check_to_go(size_pole, '°', 1);
 
-        cout << "Ход чёрными." << endl;
+        cout << "\t\t\t\t\t Ход чёрными." << endl;
 
         bool xy_test = true;
         while (xy_test)
         {
-            cout << '\n' << "Выберете шашку: ";
+            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
             for (int i = 1; x_IN <= 8; i++)
@@ -158,18 +158,18 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
     }
     else if (check == 1)
     {
-        cout << "\nВы играете чёрными (снизу)" << endl;
+        cout << "\n\t\t\t\t\t Вы играете чёрными (снизу)" << endl;
         for (int i = 0; i < 8; i += 2)
             size_pole[5][i] = motion;
 
         print_pole(size, size_pole);
 
-        cout << "Ход чёрными." << endl;
+        cout << "\t\t\t\t\t Ход чёрными." << endl;
 
         bool xy_test = true;
         while (xy_test)
         {
-            cout << '\n' << "Выберете шашку: ";
+            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
             for (int i = 1; x_IN <= 8; i++)
@@ -206,7 +206,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN - 2) >= 0))
         {
-            cout << '\n' << "Рядом варг ";
+            cout << '\n' << "\t\t\t\t\t Рядом варг ";
             neighboring_cell = 1;
         }
         bool check_l = true;
@@ -214,7 +214,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
         {
             while (xy_test)
             {
-                cout << '\n' << "Выберете куда сходить: ";
+                cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                 cin >> y_test;
                 cin >> x_test;
                 for (int i = 1; x_OU <= 8; i++)

@@ -46,15 +46,17 @@ void checkers_pole()
 void print_pole(int size, char size_pole[][8])                                                                 // вывод пол€ в консоль
 { 
     system("cls");
-    cout << "Ўашечна€ доска!" << endl;
-    cout << "   a  b  c  d  e  f  g  h\n";                                  //–исую отметки по краю доски(кординаты если по русски :D )
+    cout << "\n\n\n\n";
+    cout << "\t\t\t\t\t    a  b  c  d  e  f  g  h\n";                                  //–исую отметки по краю доски(кординаты если по русски :D )
     for (int row = 0, numb = 0; row < size; row++, numb++)                  // „ередуем цвет фона в зависимости от позиции
     {
+        cout << "\t\t\t\t\t ";
         cout << (numb + 1) << " ";
         for (int col = 0; col < size; col++)
         {
             if ((row + col) % 2 == 0) 
             {
+                
                 cout << "\033[107m " << size_pole[row][col] << " \033[0m";  // Ѕелый фон
             }
             else 
@@ -64,12 +66,12 @@ void print_pole(int size, char size_pole[][8])                                  
         }
         cout << (numb + 1) << "\n";
     }
-    cout << "   a  b  c  d  e  f  g  h\n";
+    cout << "\t\t\t\t\t    a  b  c  d  e  f  g  h\n";
     cout << endl;
-    cout << "Х - бела€ пешка." << endl;
-    cout << "∞ - чЄрна€ пешка." << endl;
-    cout << "√де [i][j] - координаты шашек и полей." << endl;
-    cout << "ѓ - шашки, которыми можно сходить.\n" << endl;
+    cout << "\t\t\t\t\t Х - бела€ пешка." << endl;
+    cout << "\t\t\t\t\t ∞ - чЄрна€ пешка." << endl;
+    cout << "\t\t\t\t\t √де [i][j] - координаты шашек и полей." << endl;
+    cout << "\t\t\t\t\t ѓ - шашки, которыми можно сходить.\n" << endl;
 }
 
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers)
