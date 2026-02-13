@@ -34,40 +34,49 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
     {
         cout << "\n\t\t\t\t\t Вы играете белыми (снизу)" << endl;
 
-        if (eat1 == 1)
-        {
-            swap(size_pole[2][1], size_pole[4][7]);
-            eat1++;
-        }
-        check_to_go(size_pole, '•', 1);
-
-        cout << "\t\t\t\t\t Ход белыми." << endl;
-
+        //if (eat1 == 1)
+        //{
+        //    swap(size_pole[2][1], size_pole[4][7]);
+        //    eat1++;
+        //}
+        
         bool xy_test = true;
         while(xy_test)
         {
-            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
-            cin >> y_test;
-            cin >> x_test;
-            for (int i = 1; x_IN <= 8; i++)
+            //check_to_go(size_pole, '•', 1);
+            while (size_pole[x_IN][y_IN] != 'Ї')
             {
-                if (x_test == (i + 48))
+                
+                check_to_go(size_pole, '•', 1);
+
+                cout << "\t\t\t\t\t Ход белыми." << endl;
+
+                cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
+                cin >> y_test;
+                cin >> x_test;
+
+                for (int i = 1; x_IN <= 8; i++)
                 {
-                    x_IN = i;
-                    x_IN -= 1;
-                    //cout << x_IN << endl;
-                    break;
+                    if (x_test == (i + 48))
+                    {
+                        x_IN = i;
+                        x_IN -= 1;
+                        //cout << x_IN << endl;
+                        break;
+                    }
                 }
-            }
-            for (int i = 1; y_IN <= 8; i++)
-            {
-                if (y_test == (i + 96))
+                for (int i = 1; y_IN <= 8; i++)
                 {
-                    y_IN = i;
-                    y_IN -= 1;
-                    //cout << y_IN << endl;
-                    break;
+                    if (y_test == (i + 96))
+                    {
+                        y_IN = i;
+                        y_IN -= 1;
+                        //cout << y_IN << endl;
+                        break;
+                    }
                 }
+                //cout << size_pole[x_IN][y_IN] << endl;
+                //system("pause");
             }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
                 xy_test = false;
@@ -78,41 +87,47 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         int neighboring_cell = 0;
         if ((size_pole[x_IN - 1][y_IN + 1] == '°') &&
             (size_pole[x_IN - 2][y_IN + 2] == ' ') &&
-            ((y_IN + 2) < 9) && ((x_IN - 2) >= 0) ||
+            ((y_IN + 2) < 8) && ((x_IN - 2) >= 0) ||
             (size_pole[x_IN - 1][y_IN - 1] == '°') &&
             (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN - 2) >=0))
         {
-            cout << '\n' << "\t\t\t\t\t Рядом варг ";
+            cout << '\n' << "\t\t\t\t\t Рядом враг ";
             neighboring_cell = 1;
         }
         bool check_l = true;
+        bool check_border = true;
         while (check_l )
         {
             while (xy_test)
             {
-                cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
-                cin >> y_test;
-                cin >> x_test;
-                for (int i = 1; x_OU <= 8; i++)
+                while (check_border)
                 {
-                    if (x_test == (i + 48))
+                    cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
+                    cin >> y_test;
+                    cin >> x_test;
+                    for (int i = 1; x_OU <= 8; i++)
                     {
-                        x_OU = i;
-                        x_OU -= 1;
-                        cout << x_OU << endl;
-                        break;
+                        if (x_test == (i + 48))
+                        {
+                            x_OU = i;
+                            x_OU -= 1;
+                            cout << x_OU << endl;
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; y_OU <= 8; i++)
-                {
-                    if (y_test == (i + 96))
+                    for (int i = 1; y_OU <= 8; i++)
                     {
-                        y_OU = i;
-                        y_OU -= 1;
-                        cout << y_OU << endl;
-                        break;
+                        if (y_test == (i + 96))
+                        {
+                            y_OU = i;
+                            y_OU -= 1;
+                            cout << y_OU << endl;
+                            break;
+                        }
                     }
+                    if (size_pole[x_OU][y_OU] == ' ')
+                        check_border = false;
                 }
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
                     xy_test = false;
@@ -133,7 +148,10 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     check_l = false;
                 }
                 else
-                    cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
+                {
+                    check_border = true;
+                    xy_test = true;
+                }
             }
             else if (neighboring_cell == 1)
             {
@@ -153,44 +171,49 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     check_l = false;
                 }
                 else
-                    cout << "!!!!!!!!!ОШИБОЧНЫЙ ДОЛБАЁБ!!!!!!!" << endl;
+                {
+                    check_border = true;
+                    xy_test = true;
+                }
             }
         }
     }
     else if (check == 1)
     {
         cout << "\n\t\t\t\t\t Вы играете белыми (сверху)" << endl;
-        for (int i = 1; i < 8; i += 2)
-            size_pole[2][i] = motion;
-
-        print_pole(size, size_pole);
-
-        cout << "\t\t\t\t\t Ход белыми." << endl;
+        //for (int i = 1; i < 8; i += 2)
+        //    size_pole[2][i] = motion;
 
         bool xy_test = true;
         while (xy_test)
         {
-            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
-            cin >> y_test;
-            cin >> x_test;
-            for (int i = 1; x_IN <= 8; i++)
+            while (size_pole[x_IN][y_IN] != 'Ї')
             {
-                if (x_test == (i + 48))
+                check_to_go(size_pole, '•', 1);
+
+                cout << "\t\t\t\t\t Ход белыми." << endl;
+                cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
+                cin >> y_test;
+                cin >> x_test;
+                for (int i = 1; x_IN <= 8; i++)
                 {
-                    x_IN = i;
-                    x_IN -= 1;
-                    cout << x_IN << endl;
-                    break;
+                    if (x_test == (i + 48))
+                    {
+                        x_IN = i;
+                        x_IN -= 1;
+                        cout << x_IN << endl;
+                        break;
+                    }
                 }
-            }
-            for (int i = 1; y_IN <= 8; i++)
-            {
-                if (y_test == (i + 96))
+                for (int i = 1; y_IN <= 8; i++)
                 {
-                    y_IN = i;
-                    y_IN -= 1;
-                    cout << y_IN << endl;
-                    break;
+                    if (y_test == (i + 96))
+                    {
+                        y_IN = i;
+                        y_IN -= 1;
+                        cout << y_IN << endl;
+                        break;
+                    }
                 }
             }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
@@ -207,7 +230,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN + 2) <= 8))
         {
-            cout << '\n' << "\t\t\t\t\t Рядом варг ";
+            cout << '\n' << "\t\t\t\t\t Рядом враг ";
             neighboring_cell = 1;
         }
         bool check_l = true;
@@ -215,27 +238,30 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         {
             while (xy_test)
             {
-                cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
-                cin >> y_test;
-                cin >> x_test;
-                for (int i = 1; x_OU <= 8; i++)
+                while (size_pole[x_OU][y_OU] != ' ')
                 {
-                    if (x_test == (i + 48))
+                    cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
+                    cin >> y_test;
+                    cin >> x_test;
+                    for (int i = 1; x_OU <= 8; i++)
                     {
-                        x_OU = i;
-                        x_OU -= 1;
-                        cout << x_OU << endl;
-                        break;
+                        if (x_test == (i + 48))
+                        {
+                            x_OU = i;
+                            x_OU -= 1;
+                            cout << x_OU << endl;
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; y_OU <= 8; i++)
-                {
-                    if (y_test == (i + 96))
+                    for (int i = 1; y_OU <= 8; i++)
                     {
-                        y_OU = i;
-                        y_OU -= 1;
-                        cout << y_OU << endl;
-                        break;
+                        if (y_test == (i + 96))
+                        {
+                            y_OU = i;
+                            y_OU -= 1;
+                            cout << y_OU << endl;
+                            break;
+                        }
                     }
                 }
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))

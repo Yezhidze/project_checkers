@@ -33,14 +33,14 @@ void checkers_pole()
     
     print_pole(size, size_pole);
 
-    if (check == 0)
-    {
+    /*if (check == 0)
+    {*/
         while(black_checkers() != 0 || white_checkers() != 0)
         {
             motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
             motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
         }
-    }
+    //}
 }
 
 void print_pole(int size, char size_pole[][8])                                                                 // вывод поля в консоль
@@ -64,7 +64,7 @@ void print_pole(int size, char size_pole[][8])                                  
                 cout << "\033[40m " << size_pole[row][col] << " \033[0m";   // Чёрный фон
             }
         }
-        cout << (numb + 1) << "\n";
+        cout << " " << (numb + 1) << "\n";
     }
     cout << "\t\t\t\t\t    a  b  c  d  e  f  g  h\n";
     cout << endl;

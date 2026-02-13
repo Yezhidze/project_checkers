@@ -38,34 +38,36 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             eat2++;
         }
 
-        check_to_go(size_pole, '°', 1);
-
-        cout << "\t\t\t\t\t Õîä ÷¸ðíûìè." << endl;
-
         bool xy_test = true;
         while (xy_test)
         {
-            cout << '\n' << "\t\t\t\t\t Âûáåðåòå øàøêó: ";
-            cin >> y_test;
-            cin >> x_test;
-            for (int i = 1; x_IN <= 8; i++)
+            while (size_pole[x_IN][y_IN] != '¯')
             {
-                if (x_test == (i + 48))
+                check_to_go(size_pole, '°', 1);
+
+                cout << "\t\t\t\t\t Õîä ÷¸ðíûìè." << endl;
+                cout << '\n' << "\t\t\t\t\t Âûáåðåòå øàøêó: ";
+                cin >> y_test;
+                cin >> x_test;
+                for (int i = 1; x_IN <= 8; i++)
                 {
-                    x_IN = i;
-                    x_IN -= 1;
-                    //cout << x_IN << endl;
-                    break;
+                    if (x_test == (i + 48))
+                    {
+                        x_IN = i;
+                        x_IN -= 1;
+                        //cout << x_IN << endl;
+                        break;
+                    }
                 }
-            }
-            for (int i = 1; y_IN <= 8; i++)
-            {
-                if (y_test == (i + 96))
+                for (int i = 1; y_IN <= 8; i++)
                 {
-                    y_IN = i;
-                    y_IN -= 1;
-                    //cout << y_IN << endl;
-                    break;
+                    if (y_test == (i + 96))
+                    {
+                        y_IN = i;
+                        y_IN -= 1;
+                        //cout << y_IN << endl;
+                        break;
+                    }
                 }
             }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
@@ -78,48 +80,55 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
 
         if ((size_pole[x_IN + 1][y_IN + 1] == '•') &&
             (size_pole[x_IN + 2][y_IN + 2] == ' ') &&
-            ((y_IN + 2) < 9) && ((x_IN + 2) < 8) ||
+            ((y_IN + 2) < 8) && ((x_IN + 2) < 8) ||
             (size_pole[x_IN + 1][y_IN - 1] == '•') &&
             (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN + 2) < 8))
         {
-            cout << '\n' << "Ðÿäîì âàðã ";
+            cout << '\n' << "\t\t\t\t\t Ðÿäîì âðàã ";
             neighboring_cell = 1;
         }
+        
         bool check_l = true;
+        bool check_border = true;
         while (check_l)
         {
             while (xy_test)
             {
-                cout << '\n' << "Âûáåðåòå êóäà ñõîäèòü: ";
-                cin >> y_test;
-                cin >> x_test;
-                for (int i = 1; x_OU <= 8; i++)
+                while (check_border)
                 {
-                    if (x_test == (i + 48))
+                    cout << '\n' << "\t\t\t\t\t Âûáåðåòå êóäà ñõîäèòü: ";
+                    cin >> y_test;
+                    cin >> x_test;
+                    for (int i = 1; x_OU <= 8; i++)
                     {
-                        x_OU = i;
-                        x_OU -= 1;
-                        cout << x_OU << endl;
-                        break;
+                        if (x_test == (i + 48))
+                        {
+                            x_OU = i;
+                            x_OU -= 1;
+                            //cout << x_OU << endl;
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; y_OU <= 8; i++)
-                {
-                    if (y_test == (i + 96))
+                    for (int i = 1; y_OU <= 8; i++)
                     {
-                        y_OU = i;
-                        y_OU -= 1;
-                        cout << y_OU << endl;
-                        break;
+                        if (y_test == (i + 96))
+                        {
+                            y_OU = i;
+                            y_OU -= 1;
+                            //cout << y_OU << endl;
+                            break;
+                        }
                     }
+                    if(size_pole[x_OU][y_OU] == ' ')
+                        check_border = false;
                 }
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
                     xy_test = false;
                 else
                     xy_test = true;
             }
-
+            // a6b5b3a4c6d5a4
             check_to_go(size_pole, '°', 2);
 
             if (neighboring_cell == 0)
@@ -132,7 +141,11 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     check_l = false;
                 }
                 else
-                    cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;
+                {
+                    check_border = true;
+                    xy_test = true;
+                }
+                    /*cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;*/
             }
             else if (neighboring_cell == 1)
             {
@@ -151,8 +164,13 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                     check_l = false;
                 }
+                //else if (size_pole[xs][ys] != '•')
                 else
-                    cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;
+                {
+                    check_border = true;
+                    xy_test = true;
+                }
+                    /*cout << "!!!!!!!!!ÎØÈÁÎ×ÍÛÉ ÄÎËÁÀ¨Á!!!!!!!" << endl;*/
             }
         }
     }
@@ -162,34 +180,38 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
         for (int i = 0; i < 8; i += 2)
             size_pole[5][i] = motion;
 
-        print_pole(size, size_pole);
-
-        cout << "\t\t\t\t\t Õîä ÷¸ðíûìè." << endl;
+        //print_pole(size, size_pole);
 
         bool xy_test = true;
         while (xy_test)
         {
-            cout << '\n' << "\t\t\t\t\t Âûáåðåòå øàøêó: ";
-            cin >> y_test;
-            cin >> x_test;
-            for (int i = 1; x_IN <= 8; i++)
+            while (size_pole[x_IN][y_IN] != '¯')
             {
-                if (x_test == (i + 48))
+                check_to_go(size_pole, '°', 1);
+
+                cout << "\t\t\t\t\t Õîä ÷¸ðíûìè." << endl;
+                cout << '\n' << "\t\t\t\t\t Âûáåðåòå øàøêó: ";
+                cin >> y_test;
+                cin >> x_test;
+                for (int i = 1; x_IN <= 8; i++)
                 {
-                    x_IN = i;
-                    x_IN -= 1;
-                    cout << x_IN << endl;
-                    break;
+                    if (x_test == (i + 48))
+                    {
+                        x_IN = i;
+                        x_IN -= 1;
+                        cout << x_IN << endl;
+                        break;
+                    }
                 }
-            }
-            for (int i = 1; y_IN <= 8; i++)
-            {
-                if (y_test == (i + 96))
+                for (int i = 1; y_IN <= 8; i++)
                 {
-                    y_IN = i;
-                    y_IN -= 1;
-                    cout << y_IN << endl;
-                    break;
+                    if (y_test == (i + 96))
+                    {
+                        y_IN = i;
+                        y_IN -= 1;
+                        cout << y_IN << endl;
+                        break;
+                    }
                 }
             }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
@@ -206,7 +228,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
             ((y_IN - 2) >= 0) && ((x_IN - 2) >= 0))
         {
-            cout << '\n' << "\t\t\t\t\t Ðÿäîì âàðã ";
+            cout << '\n' << "\t\t\t\t\t Ðÿäîì âðàã ";
             neighboring_cell = 1;
         }
         bool check_l = true;
