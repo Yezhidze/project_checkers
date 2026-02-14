@@ -1,6 +1,5 @@
 #pragma once
-//#include <windows.h>
-// //#include <iostream>
+
 #include <mmsystem.h>
 #pragma comment(lib, "winmm.lib")
 
@@ -29,11 +28,9 @@ void Music_Paused()
 {
     PlaySound(NULL, NULL, 0);
 
-    //return 0;
 }
 void Music_Playing()
 {
     PlaySound(TEXT("8bit.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
-    //return 0;
 }
