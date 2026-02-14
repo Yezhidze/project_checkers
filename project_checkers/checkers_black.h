@@ -18,7 +18,9 @@ char* black_checkers()
 
     return black_checkers;
 }
+
 int eat2{ 0 };
+
 void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty)            // проверка хода чёрных шашек
 {
     bool white{ true };

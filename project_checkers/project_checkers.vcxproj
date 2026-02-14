@@ -138,6 +138,7 @@
     <ClInclude Include="checkers_white.h" />
     <ClInclude Include="logic_game.h" />
     <ClInclude Include="main_menu.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="pole_checkers.h" />
     <ClInclude Include="Муню .h" />
   </ItemGroup>

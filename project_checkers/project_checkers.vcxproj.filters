@@ -38,5 +38,14 @@
     <ClInclude Include="logic_game.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="main_menu.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Муню .h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

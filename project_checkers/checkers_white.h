@@ -21,6 +21,7 @@ char* white_checkers()
 }
 
 int eat1{ 0 };
+
 void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty)            // проверка хода белых шашек по правилу первого хода
 {
     bool white{ true };

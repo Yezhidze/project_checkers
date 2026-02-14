@@ -171,8 +171,6 @@ void black_to_go(char size_pole[][8], char check)
 	eating = 0;
 }
 
-
-
 void check_to_go(char size_pole[][8], char check, int control)
 {
 	if (control == 1)

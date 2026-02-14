@@ -7,12 +7,20 @@
 //#include "pole_checkers.h"
 //using namespace std;
 #include "pole_checkers.h"
+#include "Music.h"
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
 
 void showAsciiArt();
 void menu();
 void podmenu();
-//void setting();
+void setting();
+
 void checkers_pole();
+
+int Music();
+void Music_Paused();
+void Music_Playing();
 
 void showAsciiArt() {
 
@@ -53,6 +61,8 @@ void showAsciiArt() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
+    Music();
+
     cout << "\t\t\t\t\tНажмите Enter для продолжения...";
     cin.get();
     system("cls");
@@ -74,9 +84,9 @@ void menu()
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|        1. Начать игру       |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        //std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        //std::cout << "\t\t\t\t \t|        2. Настройки         |\t" << endl;
-        //std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|        2. Настройки         |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|        0. Выход             |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -87,10 +97,10 @@ void menu()
 
         if (choice == '1')
             podmenu();
-        //else if (choice == '2')
-        //    setting();
+        else if (choice == '2')
+            setting();
         else if (choice == '0')
-            exit(0);
+            exit(1);
     }
 }
 
@@ -129,7 +139,34 @@ void podmenu()
             menu();
     }
 }
-//void setting()
-//{
-//
-//}
+
+void setting()
+{
+    char player{};
+
+    while (player != '1' || player != '2' || player != '0')
+    {
+
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|     1. Включить Музыку      |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|     2. Выключить Музыку     |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|      0. Выход               |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t      Ваш выбор: ";
+        std::cin >> player;
+
+        system("cls");
+
+        if (player == '1')
+            Music_Playing();
+        else if (player == '2')
+            Music_Paused();
+        else if (player == '0')
+            menu();
+    }
+
+}
