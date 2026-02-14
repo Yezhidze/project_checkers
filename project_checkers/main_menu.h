@@ -11,7 +11,7 @@
 void showAsciiArt();
 void menu();
 void podmenu();
-void setting();
+//void setting();
 void checkers_pole();
 
 void showAsciiArt() {
@@ -42,15 +42,17 @@ void showAsciiArt() {
         L"╚════════════════════════════════════════════════════════════╝"
     };
 
-    wcout << L"\n\n";
+    //wcout << L"\n\n";
     for (int i = 0; i < 19; i++)
     {
         wcout << L"\t\t\t" << art_lines[i] << endl;
     }
     wcout << L"\n\n";
+
     setlocale(LC_ALL, "ru");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
     cout << "\t\t\t\t\tНажмите Enter для продолжения...";
     cin.get();
     system("cls");
@@ -65,16 +67,16 @@ void menu()
 
     while (choice != '1' || choice != '2' || choice != '0')
     {
-        std::cout << "\n\n\n\n";
+        std::cout << "\n\n";//\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|         ГЛАВНОЕ МЕНЮ        |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|        1. Начать игру       |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t|        2. Настройки         |\t" << endl;
-        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        //std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        //std::cout << "\t\t\t\t \t|        2. Настройки         |\t" << endl;
+        //std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|        0. Выход             |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -85,8 +87,8 @@ void menu()
 
         if (choice == '1')
             podmenu();
-        else if (choice == '2')
-            setting();
+        //else if (choice == '2')
+        //    setting();
         else if (choice == '0')
             exit(0);
     }
@@ -98,7 +100,7 @@ void podmenu()
 
     while (player != '1' || player != '2' || player != '0')
     {
-        std::cout << "\n\n\n\n";
+        std::cout << "\n\n"; //\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t| ======= РЕЖИМ ИГРЫ ======== |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -127,7 +129,7 @@ void podmenu()
             menu();
     }
 }
-void setting()
-{
-
-}
+//void setting()
+//{
+//
+//}

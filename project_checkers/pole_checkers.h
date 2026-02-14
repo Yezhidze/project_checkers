@@ -32,7 +32,7 @@ void checkers_pole()
     bool check = checkers_position(size, size_pole, ptr_checkers_white, ptr_checkers_black);
     
     print_pole(size, size_pole);
-
+    system("pause");
     /*if (check == 0)
     {*/
         while(black_checkers() != 0 || white_checkers() != 0)
@@ -46,7 +46,7 @@ void checkers_pole()
 void print_pole(int size, char size_pole[][8])                                                                 // вывод поля в консоль
 { 
     system("cls");
-    cout << "\n\n\n\n";
+    cout << "\n\n"; //\n\n";
     cout << "\t\t\t\t\t    a  b  c  d  e  f  g  h\n";                                  //Рисую отметки по краю доски(кординаты если по русски :D )
     for (int row = 0, numb = 0; row < size; row++, numb++)                  // Чередуем цвет фона в зависимости от позиции
     {

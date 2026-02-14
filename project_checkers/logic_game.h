@@ -19,23 +19,10 @@ void return_to_go(char size_pole[][8], char check)
 		{
 			if (size_pole[i][j] == *ptr_motion)
 			{
-				size_pole[i][j] = *ptr_motion;
+				size_pole[i][j] = check;
 			}
 		}
 	}
-}
-void return_to_base(char size_pole[][8], char check)
-{
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            if (size_pole[i][j] == *ptr_motion)
-            {
-                size_pole[i][j] = check;
-            }
-        }
-    }
 }
 
 void white_to_go(char size_pole[][8], char check)
@@ -44,22 +31,40 @@ void white_to_go(char size_pole[][8], char check)
 	{
 		for (int j = 0; j < 8; j++)
 		{
-			if (size_pole[i][j] == check)
+			if (size_pole[i][j] == check || size_pole[i][j] == *ptr_motion)
 			{
                 if ((size_pole[i - 1][j + 1] == '∞') &&
                     (size_pole[i - 2][j + 2] == ' ') &&
-                    ((j + 2) < 8) && ((i - 2) >= 0))        // код исправил  »–»ЋЋ проверь!!!
+                    (size_pole[i - 2][j + 2] <= size_pole[0][7]))        // код исправил  »–»ЋЋ проверь!!!
+                    //((i - 2) >= 0) && ((j + 2) < 8))
                 {
                     size_pole[i][j] = *ptr_motion;
                     eating++;
                 }
 				else if ((size_pole[i - 1][j - 1] == '∞') &&
                          (size_pole[i - 2][j - 2] == ' ') &&
-                           ((j - 2) >= 0) && ((i - 2) >= 0))
+                         (size_pole[i - 2][j - 2] <= size_pole[0][0]))
+                         //((i - 2) >= 0) && ((j - 2) >= 0))
 				{
 					size_pole[i][j] = *ptr_motion;
 					eating++;
 				}
+                else if ((size_pole[i + 1][j + 1] == '∞') &&
+                        (size_pole[i + 2][j + 2] == ' ') &&
+                        (size_pole[i + 2][j + 2] <= size_pole[7][7]))
+                        //((i + 2) < 8) && ((j + 2) < 8))
+                {
+                    size_pole[i][j] = *ptr_motion;
+                    eating++;
+                }
+                else if ((size_pole[i + 1][j - 1] == '∞') &&
+                         (size_pole[i + 2][j - 2] == ' ') &&
+                         (size_pole[i + 2][j - 2] <= size_pole[7][0]))
+                        //((i + 2) < 8) && ((j - 2) >= 0))
+                {
+                    size_pole[i][j] = *ptr_motion;
+                    eating++;
+                }
 			}
 		}
 	}
@@ -104,18 +109,32 @@ void black_to_go(char size_pole[][8], char check)
 			{
 				if ((size_pole[i + 1][j + 1] == 'Х') &&
                     (size_pole[i + 2][j + 2] == ' ') &&
-                         ((j + 2) < 8) && (i + 2) <= 7)              // код исправил  »–»ЋЋ проверь!!!
+                         ((i + 2) < 8) && ((j + 2) < 8))              // код исправил  »–»ЋЋ проверь!!!
 				{
 					size_pole[i][j] = *ptr_motion;
 					eating++;
 				}
 				else if ((size_pole[i + 1][j - 1] == 'Х') &&
                          (size_pole[i + 2][j - 2] == ' ') &&
-                             ((j - 2) >= 0) && (i + 2) <= 7)
+                    ((i + 2) < 8) && ((j - 2) >= 0))
 				{
 					size_pole[i][j] = *ptr_motion;
 					eating++;
 				}
+                else if ((size_pole[i - 1][j + 1] == 'Х') &&
+                    (size_pole[i - 2][j + 2] == ' ') &&
+                    ((i - 2) >= 0) && ((j + 2) < 8))
+                {
+                    size_pole[i][j] = *ptr_motion;
+                    eating++;
+                }
+                else if ((size_pole[i - 1][j - 1] == 'Х') &&
+                    (size_pole[i - 2][j - 2] == ' ') &&
+                    ((i - 2) >= 0) && ((j - 2) >= 0))
+                {
+                    size_pole[i][j] = *ptr_motion;
+                    eating++;
+                }
 			}
 		}
 	}
@@ -173,8 +192,8 @@ void check_to_go(char size_pole[][8], char check, int control)
     else if (control == 2)
     {
         if (check == 'Х')
-            return_to_base(size_pole, check);
+            return_to_go(size_pole, check);
         else if (check == '∞')
-            return_to_base(size_pole, check);
+            return_to_go(size_pole, check);
     }
 }
