@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "pole_checkers.h"
 #include "main_menu.h"
-//#include "Music.h"
+#include "Music.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ void showAsciiArt();
 
 int main()
 {
-    showAsciiArt();
+    //showAsciiArt();
 
     setlocale(LC_ALL, "ru");
     //SetConsoleOutputCP(65001); // UTF-8
@@ -22,7 +22,7 @@ int main()
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
     
-    //checkers_pole();
+    checkers_pole();
 
     return 0;
 }

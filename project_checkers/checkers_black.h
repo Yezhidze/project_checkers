@@ -21,7 +21,7 @@ char* black_checkers()
 
 int eat2{ 0 };
 
-void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty)            // проверка хода чЄрных шашек
+void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_white)            // проверка хода чЄрных шашек
 {
     bool white{ true };
     char motion = 'ѓ';                                                                                                                // возможные ходы
@@ -173,6 +173,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 {
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+                    *ptr_number_white -= 1;
                     check_l = false;
                 }
                 //else if (size_pole[xs][ys] != 'Х')
@@ -265,7 +266,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     {
                         x_OU = i;
                         x_OU -= 1;
-                        cout << x_OU << endl;
+                        //cout << x_OU << endl;
                         break;
                     }
                 }
@@ -275,7 +276,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     {
                         y_OU = i;
                         y_OU -= 1;
-                        cout << y_OU << endl;
+                        //cout << y_OU << endl;
                         break;
                     }
                 }
@@ -314,6 +315,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 {
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+                    *ptr_number_white -= 1;
                     check_l = false;
                 }
                 else

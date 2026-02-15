@@ -22,7 +22,7 @@ char* white_checkers()
 
 int eat1{ 0 };
 
-void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty)            // проверка хода белых шашек по правилу первого хода
+void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_black)            // проверка хода белых шашек по правилу первого хода
 {
     bool white{ true };
     char motion = 'Ї';                                                                                                                // возможные ходы
@@ -184,6 +184,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 {
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+                    *ptr_number_black -= 1;
                     check_l = false;
                 }
                 else

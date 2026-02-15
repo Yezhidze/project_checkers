@@ -1,7 +1,7 @@
 #pragma once
-
 #include <mmsystem.h>
 #pragma comment(lib, "winmm.lib")
+using namespace std;
 
 int Music()
 {

@@ -1,15 +1,18 @@
 #pragma once
+#include "main_menu.h"
 #include "checkers_white.h"
 #include "checkers_black.h"
 
-using namespace std;
+//using namespace std;
 
 void print_pole(int size, char size_pole[][8]);
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
-void motion_white_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty);         // проверка хода белых шашек по правилу первого хода
-void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty);         // проверка хода чёрных шашек
+void motion_white_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_black);         // проверка хода белых шашек по правилу первого хода
+void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_white);         // проверка хода чёрных шашек
 char* white_checkers();
 char* black_checkers();
+void menu();
+
 
 
 void checkers_pole()
@@ -35,11 +38,31 @@ void checkers_pole()
     system("pause");
     /*if (check == 0)
     {*/
-        while(black_checkers() != 0 || white_checkers() != 0)
+        /*while(black_checkers() != 0 || white_checkers() != 0)
         {
             motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
             motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty);
+        }*/
+    int number_white{ 12 };
+    int* ptr_number_white = &number_white;
+    int number_black{ 12 };
+    int* ptr_number_black = &number_black;
+    bool number_check = true;
+
+    while (number_check)
+    {
+        if (*ptr_number_black > 0)
+        {
+            motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_black);
+            if (*ptr_number_white > 0)
+            {
+                motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_white);
+            }
         }
+        else
+            menu();
+    }
+    //a6b5d3c4b5d3e2c4b7a6c4d5c6e4f3d5e6c4b3d5d7e6h3g4e6c4g4f5g6e4c2d3e4c2b1d3a6b5d3c4e2d1f3f7e6f3e4a6b5e4d5e6c4a2b3c4a2g2f3h7g6f3g4b5c4g4f5g6e4f1e2a2b1e2f3e4g2h1f3a8b7f3e4g8h7e4d5c4e6
     //}
 }
 

@@ -1,15 +1,17 @@
-﻿//#pragma once
+﻿#pragma once
 //#include <iostream>
 //#include <cstdlib> 
 //#include <windows.h>
 //#include <fcntl.h>
 //#include <io.h>
 //#include "pole_checkers.h"
-//using namespace std;
+
 #include "pole_checkers.h"
 #include "Music.h"
 #include <mmsystem.h>
 #pragma comment(lib, "winmm.lib")
+
+using namespace std;
 
 void showAsciiArt();
 void menu();
