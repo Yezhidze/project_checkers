@@ -101,7 +101,7 @@ void print_pole(int size, char size_pole[][8])                                  
     cout << endl;
     cout << "\t\t\t\t\t • - белая пешка." << endl;
     cout << "\t\t\t\t\t ° - чёрная пешка." << endl;
-    cout << "\t\t\t\t\t Ї - шашки, которыми можно сходить.\n" << endl;
-    cout << "\t\t\t\t\t Пример: b1 - координаты шашек и полей." << endl;
+    cout << "\t\t\t\t\t Ї - шашки, которыми можно сходить." << endl;
+    cout << "\t\t\t\t\t Пример: b1 - координаты шашек и полей.\n" << endl;
 }
 

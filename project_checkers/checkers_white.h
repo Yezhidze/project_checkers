@@ -45,41 +45,34 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
         bool xy_test = true;
         while(xy_test)
         {
-            //check_to_go(size_pole, '•', 1);
-            /*while (size_pole[x_IN][y_IN] != 'Ї')
-            {*/
-                
-                check_to_go(size_pole, '•', 1);
+            check_to_go(size_pole, '•', 1);
 
-                cout << "\t\t\t\t\t Ход белыми." << endl;
+            cout << "\t\t\t\t\t Ход белыми." << endl;
 
-                cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
-                cin >> y_test;
-                cin >> x_test;
+            cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
+            cin >> y_test;
+            cin >> x_test;
 
-                for (int i = 1; x_IN <= 8; i++)
+            for (int i = 1; x_IN <= 8; i++)
+            {
+                if (x_test == (i + 48))
                 {
-                    if (x_test == (i + 48))
-                    {
-                        x_IN = i;
-                        x_IN -= 1;
-                        //cout << x_IN << endl;
-                        break;
-                    }
+                    x_IN = i;
+                    x_IN -= 1;
+                    //cout << x_IN << endl;
+                    break;
                 }
-                for (int i = 1; y_IN <= 8; i++)
+            }
+            for (int i = 1; y_IN <= 8; i++)
+            {
+                if (y_test == (i + 96))
                 {
-                    if (y_test == (i + 96))
-                    {
-                        y_IN = i;
-                        y_IN -= 1;
-                        //cout << y_IN << endl;
-                        break;
-                    }
+                    y_IN = i;
+                    y_IN -= 1;
+                    //cout << y_IN << endl;
+                    break;
                 }
-                //cout << size_pole[x_IN][y_IN] << endl;
-                //system("pause");
-            //}
+            }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
                 if (size_pole[x_IN][y_IN] == 'Ї')
                     xy_test = false;
@@ -296,7 +289,9 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
                     xy_test = true;
             }
         }
-    } // a6b5d3e4g6h5b3c4b5d3d3f5a2b3b7a6b3c4c8b7h3g4f5h3e2d3h7g6d3e4g8h7d1e2c6b5f3g4
+        // комбинация за белых для проверки множественного поедания
+        // a6b5d3e4g6h5b3c4b5d3d3f5a2b3b7a6b3c4c8b7h3g4f5h3e2d3h7g6d3e4g8h7d1e2c6b5f3g4
+    } 
     else if (check == 2) 
     {
         cout << "\n\t\t\t\t\t Вы играете белыми (сверху)" << endl;
