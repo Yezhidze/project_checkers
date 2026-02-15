@@ -17,6 +17,7 @@ void showAsciiArt();
 void menu();
 void podmenu();
 void setting();
+void choosing_a_side();
 
 void checkers_pole();
 
@@ -80,7 +81,7 @@ void menu()
     while (choice != '1' || choice != '2' || choice != '0')
     {
         system("cls");
-        std::cout << "\n\n";//\n\n";
+        std::cout << "\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|         ГЛАВНОЕ МЕНЮ        |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -112,12 +113,9 @@ void podmenu()
     while (player != '1' || player != '2' || player != '0')
     {
         system("cls");
-        std::cout << "\n\n"; //\n\n";
+        std::cout << "\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t| ======= РЕЖИМ ИГРЫ ======== |\t" << endl;
-        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t|        Выбор игрока:        |\t" << endl;
+        std::cout << "\t\t\t\t \t|         РЕЖИМ ИГРЫ          |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|      1. Одиночная игра      |\t" << endl;
@@ -132,7 +130,7 @@ void podmenu()
         std::cin >> player;
 
         if (player == '1')
-            std::cout << "\n\t \t   Одиночная игра" << endl;
+            cout << "Одиночная игра!" << endl;
         else if (player == '2')
             checkers_pole();
         else if (player == '0')
@@ -147,6 +145,7 @@ void setting()
     while (player != '1' || player != '2' || player != '0')
     {
         system("cls");
+        std::cout << "\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|     1. Включить Музыку      |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -165,36 +164,83 @@ void setting()
             Music_Paused();
         else if (player == '0')
             menu();
-        int a{};
     }
 
 }
-//void choosing_a_side()
-//{
-//    char player{};
-//
-//    while (player != '1' || player != '2' || player != '0')
-//    {
-//        system("cls");
-//        std::cout << "\n\n"; //\n\n";
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t|        Выбор шашки          |\t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t|      1. Белая шашка         |\t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t|      2. Черная шашка        |\t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cout << "\t\t\t\t \t|      0. Выход               |\t" << endl;
-//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-//        std::cin >> player{};
-//
-//        if (player == '1')
-//            
-//        else if (player == '2')
-//            
-//        else if (player == '0')
-//            exit(1);
-    //}
+
+int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers)
+{
+    char player{};
+    int number{};
+
+    while (player != '1' || player != '2' || player != '0')
+    {
+        system("cls");
+        std::cout << "\n\n";
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|        Выбор шашки          |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|      1. Белая шашка         |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|      2. Черная шашка        |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|      0. Выход               |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t      Ваш выбор: ";
+        std::cin >> player;
+
+        if (player == '1')
+            break;
+        else if (player == '2')
+            break;
+        else if (player == '0')
+            podmenu();
+    }
+
+    number = player - '0';
+
+    if (number == 1)
+    {
+        for (int i = 0; i < 4; i++)                         //ряд 0
+            size_pole[0][i * 2 + 1] = black_checkers[i];
+
+        for (int i = 0; i < 4; i++)                         //ряд 1
+            size_pole[1][i * 2] = black_checkers[i + 4];
+
+        for (int i = 0; i < 4; i++)                         //ряд 2
+            size_pole[2][i * 2 + 1] = black_checkers[i + 8];
+
+        for (int i = 0; i < 4; i++)                         //ряд 5
+            size_pole[5][i * 2] = white_checkers[i];
+
+        for (int i = 0; i < 4; i++)                         //ряд 6
+            size_pole[6][i * 2 + 1] = white_checkers[i + 4];
+
+        for (int i = 0; i < 4; i++)                         //ряд 7
+            size_pole[7][i * 2] = white_checkers[i + 8];
+    }
+    else if (number == 2)
+    {
+        for (int i = 0; i < 4; i++)                         //ряд 0
+            size_pole[0][i * 2 + 1] = white_checkers[i];
+
+        for (int i = 0; i < 4; i++)                         //ряд 1
+            size_pole[1][i * 2] = white_checkers[i + 4];
+
+        for (int i = 0; i < 4; i++)                         //ряд 2
+            size_pole[2][i * 2 + 1] = white_checkers[i + 8];
+
+        for (int i = 0; i < 4; i++)                         //ряд 5
+            size_pole[5][i * 2] = black_checkers[i];
+
+        for (int i = 0; i < 4; i++)                         //ряд 6
+            size_pole[6][i * 2 + 1] = black_checkers[i + 4];
+
+        for (int i = 0; i < 4; i++)                         //ряд 7
+            size_pole[7][i * 2] = black_checkers[i + 8];
+    }
+    return number;
+}

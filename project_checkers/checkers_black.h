@@ -30,7 +30,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
     int number{};
     char x_test{}, y_test{};
 
-    if (check == 0)
+    if (check == 1)
     {
         cout << "\t\t\t\t\t Вы играете чёрными (сверху)" << endl;
 
@@ -186,7 +186,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             }
         }
     }
-    else if (check == 1)
+    else if (check == 2)
     {
         cout << "\n\t\t\t\t\t Вы играете чёрными (снизу)" << endl;
         for (int i = 0; i < 8; i += 2)
@@ -211,7 +211,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     {
                         x_IN = i;
                         x_IN -= 1;
-                        cout << x_IN << endl;
+                        //cout << x_IN << endl;
                         break;
                     }
                 }
@@ -221,7 +221,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     {
                         y_IN = i;
                         y_IN -= 1;
-                        cout << y_IN << endl;
+                        //cout << y_IN << endl;
                         break;
                     }
                 }

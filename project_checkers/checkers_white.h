@@ -13,6 +13,7 @@ char* white_checkers()
 {
     static const int size_whites{ 12 };
     static char white_checkers[size_whites]{};
+    //char *ptr_white_checkers = &white_checkers[size_whites];
 
     for (int i = 0; i < size_whites; i++)
         white_checkers[i] = '•';
@@ -22,7 +23,7 @@ char* white_checkers()
 
 int eat1{ 0 };
 
-void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_black)            // проверка хода белых шашек по правилу первого хода
+void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_black)            // проверка хода белых шашек по правилу первого хода
 {
     bool white{ true };
     char motion = 'Ї';                                                                                                                // возможные ходы
@@ -31,7 +32,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
     int number{};
     char x_test{},y_test{};
 
-    if (check == 0)
+    if (check == 1)
     {
         cout << "\n\t\t\t\t\t Вы играете белыми (снизу)" << endl;
 
@@ -126,7 +127,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                         {
                             x_OU = i;
                             x_OU -= 1;
-                            cout << x_OU << endl;
+                            //cout << x_OU << endl;
                             break;
                         }
                     }
@@ -136,7 +137,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                         {
                             y_OU = i;
                             y_OU -= 1;
-                            cout << y_OU << endl;
+                            //cout << y_OU << endl;
                             break;
                         }
                     }
@@ -159,7 +160,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 {
 
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-                    size_pole[x_OU][y_OU] = white_checkers[0];
+                    size_pole[x_OU][y_OU] = *ptr_white_checkers;
                     print_pole(size, size_pole);
                     check_l = false;
                 }
@@ -296,7 +297,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             }
         }
     } // a6b5d3e4g6h5b3c4b5d3d3f5a2b3b7a6b3c4c8b7h3g4f5h3e2d3h7g6d3e4g8h7d1e2c6b5f3g4
-    else if (check == 1) 
+    else if (check == 2) 
     {
         cout << "\n\t\t\t\t\t Вы играете белыми (сверху)" << endl;
         //for (int i = 1; i < 8; i += 2)
@@ -411,7 +412,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 {
 
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-                    size_pole[x_OU][y_OU] = white_checkers[0];
+                    size_pole[x_OU][y_OU] = *ptr_white_checkers;
                     print_pole(size, size_pole);
                     check_l = false;
                 }
