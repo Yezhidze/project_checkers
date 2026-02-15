@@ -51,19 +51,30 @@ void checkers_pole()
 
     while (number_check)
     {
-        if (*ptr_number_black > 0)
-        {
+        if (*ptr_number_white > 0 && *ptr_number_black > 0)
             motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_black);
-            if (*ptr_number_white > 0)
-            {
-                motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_white);
-            }
-        }
+        //else
+        //    number_check = false;
+        if (*ptr_number_black > 0 && *ptr_number_white > 0)
+            motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_white);
         else
-            menu();
+            number_check = false;
     }
-    //a6b5d3c4b5d3e2c4b7a6c4d5c6e4f3d5e6c4b3d5d7e6h3g4e6c4g4f5g6e4c2d3e4c2b1d3a6b5d3c4e2d1f3f7e6f3e4a6b5e4d5e6c4a2b3c4a2g2f3h7g6f3g4b5c4g4f5g6e4f1e2a2b1e2f3e4g2h1f3a8b7f3e4g8h7e4d5c4e6
-    //}
+    print_pole(size, size_pole);
+    system("pause");
+    system("cls");
+    if (*ptr_number_white == 0)
+    {
+        cout << "\n\n\n\n\t\t\t\t!!!GG  BLACK WIN!!!" << endl;
+        system("pause");
+    }
+    else if (*ptr_number_black == 0)
+    {
+        cout << "\n\n\n\n\t\t\t\t!!!GG  WHITE WIN!!!" << endl;
+        system("pause");
+    }
+    menu();
+    //a6b5d3c4b5d3e2c4b7a6c4d5c6e4f3d5e6c4b3d5d7e6h3g4e6c4g4f5g6e4c2d3e4c2b1d3a6b5d3c4e2d1f3f7e6f3e4a6b5e4d5e6c4a2b3c4a2g2f3h7g6f3g4b5c4g4f5g6e4f1e2a2b1e2f3e4g2h1f3c4d3f3e4d3f5
 }
 
 void print_pole(int size, char size_pole[][8])                                                                 // вывод поля в консоль
@@ -100,8 +111,9 @@ void print_pole(int size, char size_pole[][8])                                  
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers)
 {
     int check{};
-    cout << "Выбор стороны (0 - белые, 1 - чёрные) : ";
+    cout << "\t\t\t\t\t Выбор стороны (0 - белые, 1 - чёрные) : ";
     cin >> check;
+    system("cls");
     if (check == 0)
     {
         for (int i = 0; i < 4; i++)                         //ряд 0

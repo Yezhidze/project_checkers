@@ -67,7 +67,7 @@ void showAsciiArt() {
 
     cout << "\t\t\t\t\tНажмите Enter для продолжения...";
     cin.get();
-    system("cls");
+    
     menu();
 }
 
@@ -79,6 +79,7 @@ void menu()
 
     while (choice != '1' || choice != '2' || choice != '0')
     {
+        system("cls");
         std::cout << "\n\n";//\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|         ГЛАВНОЕ МЕНЮ        |\t" << endl;
@@ -95,8 +96,6 @@ void menu()
         std::cout << "\t\t\t\t \t \t Ваш выбор: ";
         std::cin >> choice;
 
-        system("cls");
-
         if (choice == '1')
             podmenu();
         else if (choice == '2')
@@ -112,6 +111,7 @@ void podmenu()
 
     while (player != '1' || player != '2' || player != '0')
     {
+        system("cls");
         std::cout << "\n\n"; //\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t| ======= РЕЖИМ ИГРЫ ======== |\t" << endl;
@@ -131,8 +131,6 @@ void podmenu()
         std::cout << "\t\t\t\t \t      Ваш выбор: ";
         std::cin >> player;
 
-        system("cls");
-
         if (player == '1')
             std::cout << "\n\t \t   Одиночная игра" << endl;
         else if (player == '2')
@@ -148,7 +146,7 @@ void setting()
 
     while (player != '1' || player != '2' || player != '0')
     {
-
+        system("cls");
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|     1. Включить Музыку      |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -160,8 +158,6 @@ void setting()
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t      Ваш выбор: ";
         std::cin >> player;
-
-        system("cls");
 
         if (player == '1')
             Music_Playing();

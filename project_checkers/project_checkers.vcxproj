@@ -131,7 +131,6 @@
   <ItemGroup>
     <ClCompile Include="DAMKA.cpp" />
     <ClCompile Include="project_checkers.cpp" />
-    <ClCompile Include="ПОЕДАНИЕ_КИРИЛЛА.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkers_black.h" />
