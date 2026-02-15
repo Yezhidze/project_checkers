@@ -52,6 +52,7 @@ void showAsciiArt() {
         L"╚════════════════════════════════════════════════════════════╝"
     };
 
+    //wcout << L"\n\n";
     for (int i = 0; i < 19; i++)
     {
         wcout << L"\t\t\t" << art_lines[i] << endl;
@@ -111,9 +112,12 @@ void podmenu()
     while (player != '1' || player != '2' || player != '0')
     {
         system("cls");
-        std::cout << "\n\n";
+        std::cout << "\n\n"; //\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t|         РЕЖИМ ИГРЫ          |\t" << endl;
+        std::cout << "\t\t\t\t \t| ======= РЕЖИМ ИГРЫ ======== |\t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+        std::cout << "\t\t\t\t \t|        Выбор игрока:        |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|      1. Одиночная игра      |\t" << endl;
@@ -143,7 +147,6 @@ void setting()
     while (player != '1' || player != '2' || player != '0')
     {
         system("cls");
-        std::cout << "\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|     1. Включить Музыку      |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
@@ -162,6 +165,36 @@ void setting()
             Music_Paused();
         else if (player == '0')
             menu();
+        int a{};
     }
 
 }
+//void choosing_a_side()
+//{
+//    char player{};
+//
+//    while (player != '1' || player != '2' || player != '0')
+//    {
+//        system("cls");
+//        std::cout << "\n\n"; //\n\n";
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t|        Выбор шашки          |\t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t|      1. Белая шашка         |\t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t|      2. Черная шашка        |\t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cout << "\t\t\t\t \t|      0. Выход               |\t" << endl;
+//        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
+//        std::cin >> player{};
+//
+//        if (player == '1')
+//            
+//        else if (player == '2')
+//            
+//        else if (player == '0')
+//            exit(1);
+    //}
