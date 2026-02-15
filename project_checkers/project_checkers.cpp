@@ -6,11 +6,7 @@
 
 using namespace std;
 
-//void checkers_pole();
-//void print_pole(int size, char size_pole[][8]);
-
 void showAsciiArt();
-//void menu();
 
 int main()
 {

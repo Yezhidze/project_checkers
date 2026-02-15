@@ -52,7 +52,6 @@ void showAsciiArt() {
         L"╚════════════════════════════════════════════════════════════╝"
     };
 
-    //wcout << L"\n\n";
     for (int i = 0; i < 19; i++)
     {
         wcout << L"\t\t\t" << art_lines[i] << endl;
@@ -112,12 +111,9 @@ void podmenu()
     while (player != '1' || player != '2' || player != '0')
     {
         system("cls");
-        std::cout << "\n\n"; //\n\n";
+        std::cout << "\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t| ======= РЕЖИМ ИГРЫ ======== |\t" << endl;
-        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t|        Выбор игрока:        |\t" << endl;
+        std::cout << "\t\t\t\t \t|         РЕЖИМ ИГРЫ          |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|      1. Одиночная игра      |\t" << endl;
@@ -147,6 +143,7 @@ void setting()
     while (player != '1' || player != '2' || player != '0')
     {
         system("cls");
+        std::cout << "\n\n";
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|     1. Включить Музыку      |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;

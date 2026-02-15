@@ -5,8 +5,6 @@
 
 void print_pole(int size, char size_pole[][8]);
 
-//char white_check = '•';
-//char black_check = '°';
 char motion = '¯';
 char *ptr_motion = &motion;
 int eating{ 0 };
