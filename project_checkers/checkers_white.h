@@ -13,7 +13,7 @@ char* white_checkers()
 {
     static const int size_whites{ 12 };
     static char white_checkers[size_whites]{};
-    //char *ptr_white_checkers = &white_checkers[size_whites];
+  /*  char *ptr_white_checkers = &white_checkers[size_whites];*/
 
     for (int i = 0; i < size_whites; i++)
         white_checkers[i] = '•';
@@ -141,8 +141,8 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
                     xy_test = false;
                     else
                         xy_test = true;
-                else
-                    xy_test = true;
+                    else
+                        xy_test = true;
             }
 
             check_to_go(size_pole, '•', 2);
@@ -204,9 +204,7 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
                             while (xy_test)
                             {
                                 check_to_go(size_pole, '•', 1);
-
                                 cout << "\t\t\t\t\t Ход белыми." << endl;
-
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
                                 cin >> x_test;
@@ -237,8 +235,8 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
                                         xy_test = false;
                                     else
                                         xy_test = true;
-                                else
-                                    xy_test = true;
+                                    else
+                                        xy_test = true;
                             }
 
                             cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
@@ -335,8 +333,8 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
                     xy_test = false;
                 else
                     xy_test = true;
-            else
-                xy_test = true;
+                else
+                    xy_test = true;
         }
         xy_test = true;
         int neighboring_cell = 0;
@@ -355,11 +353,11 @@ void motion_white_checkers(char *ptr_white_checkers,char* black_checkers, int si
             (size_pole[x_IN - 1][y_IN - 1] == '°') &&
             (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
             ((x_IN - 2) >= 0) && ((y_IN - 2) >= 0))
-        {
+         {
             cout << '\n' << "\t\t\t\t\t Рядом враг ";
             neighboring_cell = 1;
-        }
-        bool check_l = true;
+         }
+         bool check_l = true;
         while (check_l)
         {
             while (xy_test)

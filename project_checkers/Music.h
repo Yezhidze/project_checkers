@@ -10,10 +10,10 @@ int Music()
     bool isPlaying = false;
     bool isPaused = false;
 
-    DWORD volume = 0x500;                                                  // Можно регулировать громкость музыки
+    DWORD volume = 0x1000;                                                  // Можно регулировать громкость музыки
     waveOutSetVolume(NULL, MAKELONG(volume, volume));
 
-    BOOL result = PlaySound(TEXT("8bit.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    BOOL result = PlaySound(TEXT("Sound.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
     isPlaying = true;
 
     if (!result) {
@@ -31,6 +31,6 @@ void Music_Paused()
 }
 void Music_Playing()
 {
-    PlaySound(TEXT("8bit.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    PlaySound(TEXT("Sound.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
 }

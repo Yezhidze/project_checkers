@@ -35,7 +35,7 @@ void checkers_pole()
     char* ptr_checkers_white = white_checkers();
     char* ptr_checkers_black = black_checkers();
 
-    //*ptr_check = checkers_position(size, size_pole, ptr_checkers_white, ptr_checkers_black);
+  /* *ptr_check = checkers_position(size, size_pole, ptr_checkers_white, ptr_checkers_black);*/
     int check = checkers_position(size, size_pole, ptr_checkers_white, ptr_checkers_black);
     
     print_pole(size, size_pole);
