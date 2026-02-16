@@ -378,7 +378,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 }
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
                 {
-                    if (size_pole[x_OU][y_OU] != ' ')
+                    if (size_pole[x_OU][y_OU] == ' ')
                         xy_test = false;
                     else
                         xy_test = true;
@@ -413,7 +413,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     ys = y_IN - 1;
                 else
                     ys = y_OU - 1;
-                if (size_pole[xs][ys] == '°')
+                if (size_pole[xs][ys] == '•')
                 {
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
@@ -514,7 +514,6 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                                 swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                                 *ptr_number_white -= 1;
                                 check_to_go(size_pole, '°', 2, ptr_check_number);
-                                check_l = false;
                             }
                             multi_kill = true;
                         }

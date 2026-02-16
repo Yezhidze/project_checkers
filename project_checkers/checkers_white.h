@@ -368,7 +368,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                         //cout << x_OU << endl;
                         break;
                     }
-                }
+                } 
                 for (int i = 1; y_OU <= 8; i++)
                 {
                     if (y_test == (i + 96))
@@ -381,7 +381,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 }
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
                 {
-                    if (size_pole[x_OU][y_OU] != ' ')
+                    if (size_pole[x_OU][y_OU] == ' ')
                         xy_test = false;
                     else
                         xy_test = true;
