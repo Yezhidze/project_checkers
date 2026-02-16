@@ -36,8 +36,7 @@ void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 			if (size_pole[i][j] == check || size_pole[i][j] == *ptr_motion)
 			{
                 if ((size_pole[i - 1][j + 1] == '∞') &&
-                    (size_pole[i - 2][j + 2] == ' ') &&
-                    //(size_pole[i - 2][j + 2] <= size_pole[0][7]) &&       // код исправил  »–»ЋЋ проверь!!!
+                    (size_pole[i - 2][j + 2] == ' ') &&         // код исправил  »–»ЋЋ проверь!!!      
                    ((i - 2) >= 0) && ((j + 2) < 8))
                 {
                     size_pole[i][j] = *ptr_motion;
@@ -45,7 +44,6 @@ void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
                 }
 				else if ((size_pole[i - 1][j - 1] == '∞') &&
                          (size_pole[i - 2][j - 2] == ' ') &&
-                         //(size_pole[i - 2][j - 2] <= size_pole[0][0]) &&
                         ((i - 2) >= 0) && ((j - 2) >= 0))
 				{
 					size_pole[i][j] = *ptr_motion;
@@ -53,7 +51,6 @@ void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 				}
                 else if ((size_pole[i + 1][j + 1] == '∞') &&
                          (size_pole[i + 2][j + 2] == ' ') &&
-                         //(size_pole[i + 2][j + 2] <= size_pole[7][7]) &&
                         ((i + 2) < 8) && ((j + 2) < 8))
                 {
                     size_pole[i][j] = *ptr_motion;
@@ -61,7 +58,6 @@ void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
                 }
                 else if ((size_pole[i + 1][j - 1] == '∞') &&
                          (size_pole[i + 2][j - 2] == ' ') &&
-                         //(size_pole[i + 2][j - 2] <= size_pole[7][0]) &&
                         ((i + 2) < 8) && ((j - 2) >= 0))
                 {
                     size_pole[i][j] = *ptr_motion;
@@ -142,7 +138,6 @@ void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 			{
 				if ((size_pole[i + 1][j + 1] == 'Х') &&
                     (size_pole[i + 2][j + 2] == ' ') &&
-                    //(size_pole[i + 2][j + 2] <= size_pole[7][7]) &&
                    ((i + 2) < 8) && ((j + 2) < 8))              // код исправил  »–»ЋЋ проверь!!!
 				{
 					size_pole[i][j] = *ptr_motion;
@@ -150,7 +145,6 @@ void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 				}
 				else if ((size_pole[i + 1][j - 1] == 'Х') &&
                          (size_pole[i + 2][j - 2] == ' ') &&
-                         //(size_pole[i + 2][j - 2] <= size_pole[7][0]) &&
                         ((i + 2) < 8) && ((j - 2) >= 0))
 				{
 					size_pole[i][j] = *ptr_motion;
@@ -158,7 +152,6 @@ void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 				}
                 else if ((size_pole[i - 1][j + 1] == 'Х') &&
                          (size_pole[i - 2][j + 2] == ' ') &&
-                         //(size_pole[i - 2][j + 2] <= size_pole[0][7]) &&
                         ((i - 2) >= 0) && ((j + 2) < 8))
                 {
                     size_pole[i][j] = *ptr_motion;
@@ -166,7 +159,6 @@ void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
                 }
                 else if ((size_pole[i - 1][j - 1] == 'Х') &&
                          (size_pole[i - 2][j - 2] == ' ') &&
-                         //(size_pole[i - 2][j - 2] <= size_pole[0][0]) &&
                         ((i - 2) >= 0) && ((j - 2) >= 0))
                 {
                     size_pole[i][j] = *ptr_motion;
@@ -246,8 +238,6 @@ int check_selection(int *ptr_check_number)
         return number;
     else if (number == 2)
         return number;
-    /*else
-        checkers_position();*/
 }
 
 void check_to_go(char size_pole[][8], char check, int control, int* ptr_check_number)  //переделать передачу переменной дл€ получени€ значени€ number из checkers_position()

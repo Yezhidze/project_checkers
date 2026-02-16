@@ -10,16 +10,16 @@ void showAsciiArt();
 
 int main()
 {
-    showAsciiArt();
+    //showAsciiArt();
 
-    //SetConsoleOutputCP(65001); // UTF-8
-    //SetConsoleCP(65001);
+    /*SetConsoleOutputCP(65001); // UTF-8
+    SetConsoleCP(65001);*/
 
-    /*setlocale(LC_ALL, "ru");
+    setlocale(LC_ALL, "ru");
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
     
-    checkers_pole();*/
+    checkers_pole();
 
     return 0;
 }

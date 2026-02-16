@@ -271,6 +271,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                                     break;
                                 }
                             }
+
                             if (x_IN > x_OU)
                                 xs = x_IN - 1;
                             else
