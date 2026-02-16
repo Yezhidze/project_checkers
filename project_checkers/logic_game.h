@@ -4,8 +4,10 @@
 #include "checkers_black.h"
 #include "pole_checkers.h"
 
+void checkers_pole();
 void print_pole(int size, char size_pole[][8]);
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
+int check_selection(int* ptr_check_number);
 
 char motion = 'Ї';
 char *ptr_motion = &motion;
@@ -25,7 +27,7 @@ void return_to_go(char size_pole[][8], char check)
 	}
 }
 
-void white_to_go(char size_pole[][8], char check, int number)
+void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_number)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -68,6 +70,7 @@ void white_to_go(char size_pole[][8], char check, int number)
 			}
 		}
 	}
+    int number = check_selection(ptr_check_number);
 
 	if(eating == 0)
 	{
@@ -129,7 +132,7 @@ void white_to_go(char size_pole[][8], char check, int number)
 	eating = 0;
 }
 
-void black_to_go(char size_pole[][8], char check, int number)
+void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_number)//, int number
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -172,6 +175,7 @@ void black_to_go(char size_pole[][8], char check, int number)
 			}
 		}
 	}
+    int number = check_selection(ptr_check_number);
 
 	if (eating == 0)
 	{
@@ -235,20 +239,31 @@ void black_to_go(char size_pole[][8], char check, int number)
 	eating = 0;
 }
 
-void check_to_go(char size_pole[][8], char check, int control)  //переделать передачу переменной для получения значения number из checkers_position()
+int check_selection(int *ptr_check_number)
 {
-    //int numbers = &number;
+    int number = *ptr_check_number;
+    if (number == 1)
+        return number;
+    else if (number == 2)
+        return number;
+    /*else
+        checkers_position();*/
+}
+
+void check_to_go(char size_pole[][8], char check, int control, int* ptr_check_number)  //переделать передачу переменной для получения значения number из checkers_position()
+{
+    int numbers = *ptr_check_number;
 	if (control == 1)
 	{
 		if (check == '•')
 		{
-			white_to_go(size_pole, check, number);
+			white_to_go(size_pole, check, control, ptr_check_number);//, number
 			print_pole(8, size_pole);
 		}
 
 		else if (check == '°')
 		{
-			black_to_go(size_pole, check, number);
+			black_to_go(size_pole, check, control, ptr_check_number);//, number
 			print_pole(8, size_pole);
 		}
 	}

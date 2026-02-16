@@ -3,10 +3,11 @@
 #include "logic_game.h"
 using namespace std;
 
+int check_selection(int* ptr_check_number);
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
 void checkers_pole();
 void print_pole(int size, char size_pole[][8]);
-void check_to_go(char size_pole[][8], char check, int control);
+void check_to_go(char size_pole[][8], char check, int control, int *ptr_check_number);
 
 char* white_checkers()
 {
@@ -21,7 +22,7 @@ char* white_checkers()
 
 int eat1{ 0 };
 
-void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], int check, char empty, int *ptr_number_black)            // проверка хода белых шашек по правилу первого хода
+void motion_white_checkers(char* white_checkers,char* black_checkers, int size, char size_pole[][8], int check, char empty, int *ptr_number_black, int *ptr_check_number)            // проверка хода белых шашек по правилу первого хода
 {
     bool white{ true };
     char motion = 'Ї';                                                                                                                      // возможные ходы
@@ -43,7 +44,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         bool xy_test = true;
         while(xy_test)
         {
-            check_to_go(size_pole, '•', 1);
+            check_to_go(size_pole, '•', 1, ptr_check_number);
 
             cout << "\t\t\t\t\t Ход белыми." << endl;
             cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
@@ -144,7 +145,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                         xy_test = true;
             }
 
-            check_to_go(size_pole, '•', 2);
+            check_to_go(size_pole, '•', 2, ptr_check_number);
 
             if (neighboring_cell == 0)
             {
@@ -199,7 +200,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                             xy_test = true;
                             while (xy_test)
                             {
-                                check_to_go(size_pole, '•', 1);
+                                check_to_go(size_pole, '•', 1, ptr_check_number);
                                 cout << "\t\t\t\t\t Ход белыми." << endl;
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
@@ -272,7 +273,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                                 size_pole[xs][ys] = ' ';
                                 swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                                 *ptr_number_black -= 1;
-                                check_to_go(size_pole, '•', 2);
+                                check_to_go(size_pole, '•', 2, ptr_check_number);
                             }
                             multi_kill = true;
                         }
@@ -293,7 +294,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         bool xy_test = true;
         while (xy_test)
         {
-                check_to_go(size_pole, '•', 1);
+                check_to_go(size_pole, '•', 1, ptr_check_number);
 
                 cout << "\t\t\t\t\t Ход белыми." << endl;
                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
@@ -389,7 +390,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     xy_test = true;
             }
 
-            check_to_go(size_pole, '•', 2);
+            check_to_go(size_pole, '•', 2, ptr_check_number);
 
             if (neighboring_cell == 0)
             {
@@ -443,7 +444,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                             xy_test = true;
                             while (xy_test)
                             {
-                                check_to_go(size_pole, '•', 1);
+                                check_to_go(size_pole, '•', 1, ptr_check_number);
                                 cout << "\t\t\t\t\t Ход белыми." << endl;
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
@@ -516,7 +517,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                                 size_pole[xs][ys] = ' ';
                                 swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                                 *ptr_number_black -= 1;
-                                check_to_go(size_pole, '•', 2);
+                                check_to_go(size_pole, '•', 2, ptr_check_number);
                             }
                             multi_kill = true;
                         }

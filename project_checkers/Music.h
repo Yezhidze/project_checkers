@@ -10,7 +10,7 @@ int Music()
     bool isPlaying = false;
     bool isPaused = false;
 
-    DWORD volume = 0x1000;                                                  // Можно регулировать громкость музыки
+    DWORD volume = 0x500;                                                  // Можно регулировать громкость музыки
     waveOutSetVolume(NULL, MAKELONG(volume, volume));
 
     BOOL result = PlaySound(TEXT("Sound.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);

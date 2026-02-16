@@ -180,10 +180,10 @@ int checkers_position(int size, char size_pole[][8], char* white_checkers, char*
         std::cout << "\t\t\t\t \t|        Выбор шашки          |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t|      1. Белая шашка         |\t" << endl;
+        std::cout << "\t\t\t\t \t|      1. Белая шашка - •     |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
-        std::cout << "\t\t\t\t \t|      2. Черная шашка        |\t" << endl;
+        std::cout << "\t\t\t\t \t|      2. Черная шашка - °    |\t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t ----------------------------- \t" << endl;
         std::cout << "\t\t\t\t \t|      0. Выход               |\t" << endl;
