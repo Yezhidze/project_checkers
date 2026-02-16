@@ -9,8 +9,8 @@ void print_pole(int size, char size_pole[][8]);
 int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
 char* white_checkers();
 char* black_checkers();
-void motion_white_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_black);         // проверка хода белых шашек по правилу первого хода
-void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty, int *ptr_number_white);         // проверка хода чёрных шашек
+void motion_white_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], int check, char empty, int *ptr_number_black);         // проверка хода белых шашек по правилу первого хода
+void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], int check, char empty, int *ptr_number_white);         // проверка хода чёрных шашек
 
 void menu();
 
@@ -36,7 +36,7 @@ void checkers_pole()
     char* ptr_checkers_black = black_checkers();
 
   /* *ptr_check = checkers_position(size, size_pole, ptr_checkers_white, ptr_checkers_black);*/
-    int check = checkers_position(size, size_pole, ptr_checkers_white, ptr_checkers_black);
+    int check_number = checkers_position (size, size_pole, ptr_checkers_white, ptr_checkers_black);
     
     print_pole(size, size_pole);
     system("pause");
@@ -50,9 +50,9 @@ void checkers_pole()
     while (number_check)
     {
         if (*ptr_number_white > 0 && *ptr_number_black > 0)
-            motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_black);
+            motion_white_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check_number, empty, ptr_number_black);
         if (*ptr_number_black > 0 && *ptr_number_white > 0)
-            motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check, empty, ptr_number_white);
+            motion_black_checkers(ptr_checkers_white, ptr_checkers_black, size, size_pole, check_number, empty, ptr_number_white);
         else
             number_check = false;
     }

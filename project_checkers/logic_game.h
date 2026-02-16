@@ -1,9 +1,11 @@
 #pragma once
+#include "main_menu.h"
 #include "checkers_white.h"
 #include "checkers_black.h"
 #include "pole_checkers.h"
 
 void print_pole(int size, char size_pole[][8]);
+int checkers_position(int size, char size_pole[][8], char* white_checkers, char* black_checkers);
 
 char motion = 'ѓ';
 char *ptr_motion = &motion;
@@ -23,7 +25,7 @@ void return_to_go(char size_pole[][8], char check)
 	}
 }
 
-void white_to_go(char size_pole[][8], char check)
+void white_to_go(char size_pole[][8], char check, int number)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -69,35 +71,65 @@ void white_to_go(char size_pole[][8], char check)
 
 	if(eating == 0)
 	{
-		for (int i = 0; i < 8; i++)
-		{
-			for (int j = 0; j < 8; j++)
-			{
-				if (size_pole[i][j] == check)
-				{
-					if (j == 0)
-					{
-						if (size_pole[i - 1][1] == ' ')
-							size_pole[i][j] = *ptr_motion;
-					}
-					else if (j == 7)
-					{
-						if (size_pole[i - 1][6] == ' ')
-							size_pole[i][j] = *ptr_motion;
-					}
-					else
-					{
-						if ((size_pole[i - 1][j + 1] == ' ') || (size_pole[i - 1][j - 1] == ' ') )
-							size_pole[i][j] = *ptr_motion;
-					}
-				}
-			}
-		}
-	}
+        if(number == 1)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (size_pole[i][j] == check)
+                    {
+                        if (j == 0)
+                        {
+                            if (size_pole[i - 1][1] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else if (j == 7)
+                        {
+                            if (size_pole[i - 1][6] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else
+                        {
+                            if ((size_pole[i - 1][j + 1] == ' ') || (size_pole[i - 1][j - 1] == ' '))
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                    }
+                }
+            }
+        }
+        else if (number == 2)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (size_pole[i][j] == check)
+                    {
+                        if (j == 0)
+                        {
+                            if (size_pole[i + 1][1] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else if (j == 7)
+                        {
+                            if (size_pole[i + 1][6] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else
+                        {
+                            if ((size_pole[i + 1][j + 1] == ' ') || (size_pole[i + 1][j - 1] == ' '))
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                    }
+                }
+            }
+        }
+    }
 	eating = 0;
 }
 
-void black_to_go(char size_pole[][8], char check)
+void black_to_go(char size_pole[][8], char check, int number)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -143,49 +175,80 @@ void black_to_go(char size_pole[][8], char check)
 
 	if (eating == 0)
 	{
-		for (int i = 0; i < 8; i++)
-		{
-			for (int j = 0; j < 8; j++)
-			{
-				if (size_pole[i][j] == check)
-				{
-					if (j == 0)
-					{
-						if (size_pole[i + 1][1] == ' ')
-							size_pole[i][j] = *ptr_motion;
-					}
-					else if (j == 7)
-					{
-						if (size_pole[i + 1][6] == ' ')
-							size_pole[i][j] = *ptr_motion;
-					}
-					else
-					{
-						if ((size_pole[i + 1][j + 1] == ' ') || (size_pole[i + 1][j - 1] == ' '))
-							size_pole[i][j] = *ptr_motion;
+        if(number == 1)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (size_pole[i][j] == check)
+                    {
+                        if (j == 0)
+                        {
+                            if (size_pole[i + 1][1] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else if (j == 7)
+                        {
+                            if (size_pole[i + 1][6] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else
+                        {
+                            if ((size_pole[i + 1][j + 1] == ' ') || (size_pole[i + 1][j - 1] == ' '))
+                                size_pole[i][j] = *ptr_motion;
 
 
-					}
-				}
-			}
-		}
+                        }
+                    }
+                }
+            }
+        }
+        else if (number == 2)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (size_pole[i][j] == check)
+                    {
+                        if (j == 0)
+                        {
+                            if (size_pole[i - 1][1] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else if (j == 7)
+                        {
+                            if (size_pole[i - 1][6] == ' ')
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                        else
+                        {
+                            if ((size_pole[i - 1][j + 1] == ' ') || (size_pole[i - 1][j - 1] == ' '))
+                                size_pole[i][j] = *ptr_motion;
+                        }
+                    }
+                }
+            }
+        }
 	}
 	eating = 0;
 }
 
-void check_to_go(char size_pole[][8], char check, int control)
+void check_to_go(char size_pole[][8], char check, int control)  //переделать передачу переменной дл€ получени€ значени€ number из checkers_position()
 {
+    //int numbers = &number;
 	if (control == 1)
 	{
 		if (check == 'Х')
 		{
-			white_to_go(size_pole, check);
+			white_to_go(size_pole, check, number);
 			print_pole(8, size_pole);
 		}
 
 		else if (check == '∞')
 		{
-			black_to_go(size_pole, check);
+			black_to_go(size_pole, check, number);
 			print_pole(8, size_pole);
 		}
 	}

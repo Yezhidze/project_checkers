@@ -21,10 +21,10 @@ char* black_checkers()
 
 int eat2{ 0 };
 
-void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], bool check, char empty, int* ptr_number_white)            // проверка хода чЄрных шашек
+void motion_black_checkers(char* white_checkers, char* black_checkers, int size, char size_pole[][8], int check, char empty, int* ptr_number_white)            // проверка хода чЄрных шашек
 {
     bool white{ true };
-    char motion = 'ѓ';                                                                                                                // возможные ходы
+    char motion = 'ѓ';                                                                                                                        // возможные ходы
     int x_IN{ -1 }, x_OU{ -1 };                                                                                                               // координаты
     int y_IN{ -1 }, y_OU{ -1 };
     int number{};
@@ -43,38 +43,40 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
         bool xy_test = true;
         while (xy_test)
         {
-            while (size_pole[x_IN][y_IN] != 'ѓ')
+            check_to_go(size_pole, '∞', 1);
+
+            cout << "\t\t\t\t\t ’од чЄрными." << endl;
+            cout << '\n' << "\t\t\t\t\t ¬ыберете шашку: ";
+            cin >> y_test;
+            cin >> x_test;
+
+            for (int i = 1; x_IN <= 8; i++)
             {
-                check_to_go(size_pole, '∞', 1);
-
-                cout << "\t\t\t\t\t ’од чЄрными." << endl;
-                cout << '\n' << "\t\t\t\t\t ¬ыберете шашку: ";
-                cin >> y_test;
-                cin >> x_test;
-
-                for (int i = 1; x_IN <= 8; i++)
+                if (x_test == (i + 48))
                 {
-                    if (x_test == (i + 48))
-                    {
-                        x_IN = i;
-                        x_IN -= 1;
-                        //cout << x_IN << endl;
-                        break;
-                    }
+                    x_IN = i;
+                    x_IN -= 1;
+                    //cout << x_IN << endl;
+                    break;
                 }
-                for (int i = 1; y_IN <= 8; i++)
+            }
+            for (int i = 1; y_IN <= 8; i++)
+            {
+                if (y_test == (i + 96))
                 {
-                    if (y_test == (i + 96))
-                    {
-                        y_IN = i;
-                        y_IN -= 1;
-                        //cout << y_IN << endl;
-                        break;
-                    }
+                    y_IN = i;
+                    y_IN -= 1;
+                    //cout << y_IN << endl;
+                    break;
                 }
             }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
-                xy_test = false;
+            {
+                if (size_pole[x_IN][y_IN] == 'ѓ')
+                    xy_test = false;
+                else
+                    xy_test = true;
+            }
             else
                 xy_test = true;
         }
@@ -109,40 +111,39 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             {
                 /* while (check_border)
                  {*/
-                cout << '\n' << "\t\t\t\t\t ¬ыберете куда сходить: ";
-                cin >> y_test;
-                cin >> x_test;
-                for (int i = 1; x_OU <= 8; i++)
-                {
-                    if (x_test == (i + 48))
+                    cout << '\n' << "\t\t\t\t\t ¬ыберете куда сходить: ";
+                    cin >> y_test;
+                    cin >> x_test;
+                    for (int i = 1; x_OU <= 8; i++)
                     {
-                        x_OU = i;
-                        x_OU -= 1;
-                        //cout << x_OU << endl;
-                        break;
+                        if (x_test == (i + 48))
+                        {
+                            x_OU = i;
+                            x_OU -= 1;
+                            //cout << x_OU << endl;
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; y_OU <= 8; i++)
-                {
-                    if (y_test == (i + 96))
+                    for (int i = 1; y_OU <= 8; i++)
                     {
-                        y_OU = i;
-                        y_OU -= 1;
-                        //cout << y_OU << endl;
-                        break;
+                        if (y_test == (i + 96))
+                        {
+                            y_OU = i;
+                            y_OU -= 1;
+                            //cout << y_OU << endl;
+                            break;
+                        }
                     }
-                }
-               /* if (size_pole[x_OU][y_OU] == ' ')
-                    check_border = false*/;
-                /* }*/
-                if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
-                    if (size_pole[x_OU][y_OU] == ' ')
-                        xy_test = false;
+                //}
+                    if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
+                        if (size_pole[x_OU][y_OU] == ' ')
+                            xy_test = false;
+                        else
+                            xy_test = true;
                     else
                         xy_test = true;
-                else
-                    xy_test = true;
             }
+            // тест поедание за чЄрных
             // a6b5b3a4c6d5a4
             check_to_go(size_pole, '∞', 2);
 
@@ -156,11 +157,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     check_l = false;
                 }
                 else
-                {
-                    /* check_border = true;*/
                     xy_test = true;
-                }
-                /*cout << "!!!!!!!!!ќЎ»Ѕќ„Ќџ… ƒќЋЅј®Ѕ!!!!!!!" << endl;*/
             }
             else if (neighboring_cell == 1)
             {
@@ -178,27 +175,27 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                     *ptr_number_white -= 1;
-                    check_l = false;
-                    bool  multi_kill = true;
+                    check_l = true;
+                    bool  multi_kill{ true };
                     while (multi_kill)
                     {
-                        if ((size_pole[x_IN + 1][y_IN + 1] == 'Х') &&
-                            (size_pole[x_IN + 2][y_IN + 2] == ' ') &&
-                            ((x_IN + 2) < 8) && ((y_IN + 2) < 8) ||
+                        if ((size_pole[x_OU + 1][y_OU + 1] == 'Х') &&
+                            (size_pole[x_OU + 2][y_OU + 2] == ' ') &&
+                            ((x_OU + 2) < 8) && ((y_OU + 2) < 8) ||
 
-                            (size_pole[x_IN + 1][y_IN - 1] == 'Х') &&
-                            (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
-                            ((x_IN + 2) < 8) && ((y_IN - 2) >= 0) ||
+                            (size_pole[x_OU + 1][y_OU - 1] == 'Х') &&
+                            (size_pole[x_OU + 2][y_OU - 2] == ' ') &&
+                            ((x_OU + 2) < 8) && ((y_OU - 2) >= 0) ||
 
-                            (size_pole[x_IN - 1][y_IN + 1] == 'Х') &&
-                            (size_pole[x_IN - 2][y_IN + 2] == ' ') &&
-                            ((x_IN - 2) >= 0) && ((y_IN + 2) < 8) ||
+                            (size_pole[x_OU - 1][y_OU + 1] == 'Х') &&
+                            (size_pole[x_OU - 2][y_OU + 2] == ' ') &&
+                            ((x_OU - 2) >= 0) && ((y_OU + 2) < 8) ||
 
-                            (size_pole[x_IN - 1][y_IN - 1] == 'Х') &&
-                            (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
-                            ((x_IN - 2) >= 0) && ((y_IN - 2) >= 0))
+                            (size_pole[x_OU - 1][y_OU - 1] == 'Х') &&
+                            (size_pole[x_OU - 2][y_OU - 2] == ' ') &&
+                            ((x_OU - 2) >= 0) && ((y_OU - 2) >= 0))
                         {
-                            check_to_go(size_pole, '∞', 1);
+                            //check_to_go(size_pole, '∞', 1);
                             xy_test = true;
                             while (xy_test)
                             {
@@ -207,6 +204,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                                 cout << '\n' << "\t\t\t\t\t ¬ыберете шашку: ";
                                 cin >> y_test;
                                 cin >> x_test;
+
                                 for (int i = 1; x_IN <= 8; i++)
                                 {
                                     if (x_test == (i + 48))
@@ -227,23 +225,23 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                                         break;
                                     }
                                 }
-                            
-
                                 if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
-                                   if (size_pole[x_IN][y_IN] == 'ѓ')
+                                {
+                                    if (size_pole[x_IN][y_IN] == 'ѓ')
+                                        xy_test = false;
+                                    else
                                         xy_test = true;
-                                   else
-                                        xy_test = true;
-                                   else
-                                        xy_test = true;
+                                }
+                                else
+                                    xy_test = true;
                             }
 
                             cout << '\n' << "\t\t\t\t\t ¬ыберете куда сходить: ";
                             cin >> y_test;
                             cin >> x_test;
-                            for (int i = 1; y_OU <= 8; i++)
+                            for (int i = 1; x_OU <= 8; i++)
                             {
-                                if (y_test == (i + 96))
+                                if (x_test == (i + 48))
                                 {
                                     x_OU = i;
                                     x_OU -= 1;
@@ -261,7 +259,6 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                                     break;
                                 }
                             }
-
                             if (x_IN > x_OU)
                                 xs = x_IN - 1;
                             else
@@ -270,18 +267,18 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                                 ys = y_IN - 1;
                             else
                                 ys = y_OU - 1;
-                            if (size_pole[xs][ys] == '∞')
+                            if (size_pole[xs][ys] == 'Х')
                             {
                                 size_pole[xs][ys] = ' ';
                                 swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                                 *ptr_number_white -= 1;
-                                check_to_go(size_pole, 'Х', 2);
+                                check_to_go(size_pole, '∞', 2);
                                 check_l = false;
                             }
                             multi_kill = true;
                         }
                         else
-                            multi_kill = true;
+                            multi_kill = false;
                     }
                 }
                 else
@@ -295,7 +292,8 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
         bool xy_test = true;
         while (xy_test)
         {
-            check_to_go(size_pole, 'Х', 1);
+            check_to_go(size_pole, '∞', 1);
+
             cout << "\t\t\t\t\t ’од чЄрными." << endl;
             cout << '\n' << "\t\t\t\t\t ¬ыберете шашку: ";
             cin >> y_test;
@@ -321,28 +319,30 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 }
             }
             if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
+            {
                 if (size_pole[x_IN][y_IN] == 'ѓ')
                     xy_test = false;
                 else
                     xy_test = true;
-                else
-                    xy_test = true;
+            }
+            else
+                xy_test = true;
         }
         xy_test = true;
         int neighboring_cell = 0;
-        if ((size_pole[x_IN + 1][y_IN + 1] == '∞') &&
+        if ((size_pole[x_IN + 1][y_IN + 1] == 'Х') &&
             (size_pole[x_IN + 2][y_IN + 2] == ' ') &&
             ((x_IN + 2) < 8) && ((y_IN + 2) < 8) ||
 
-            (size_pole[x_IN + 1][y_IN - 1] == '∞') &&
+            (size_pole[x_IN + 1][y_IN - 1] == 'Х') &&
             (size_pole[x_IN + 2][y_IN - 2] == ' ') &&
             ((x_IN + 2) < 8) && ((y_IN - 2) >= 0) ||
 
-            (size_pole[x_IN - 1][y_IN + 1] == '∞') &&
+            (size_pole[x_IN - 1][y_IN + 1] == 'Х') &&
             (size_pole[x_IN - 2][y_IN + 2] == ' ') &&
             ((x_IN - 2) >= 0) && ((y_IN + 2) < 8) ||
 
-            (size_pole[x_IN - 1][y_IN - 1] == '∞') &&
+            (size_pole[x_IN - 1][y_IN - 1] == 'Х') &&
             (size_pole[x_IN - 2][y_IN - 2] == ' ') &&
             ((x_IN - 2) >= 0) && ((y_IN - 2) >= 0))
         {
@@ -376,13 +376,16 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     }
                 }
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
+                {
                     if (size_pole[x_OU][y_OU] != ' ')
                         xy_test = false;
                     else
                         xy_test = true;
+                }
                 else
                     xy_test = true;
             }
+
             check_to_go(size_pole, '∞', 2);
 
             if (neighboring_cell == 0)
@@ -391,14 +394,12 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 {
 
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
-                    //size_pole[x_OU][y_OU] = *ptr_black_checkers;
+                    size_pole[x_OU][y_OU] = black_checkers[0];
                     print_pole(size, size_pole);
                     check_l = false;
                 }
                 else
-                {
                     xy_test = true;
-                }
             }
             else if (neighboring_cell == 1)
             {
@@ -416,11 +417,112 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                     check_l = false;
+                    bool  multi_kill{ true };
+                    while (multi_kill)
+                    {
+                        if ((size_pole[x_OU + 1][y_OU + 1] == 'Х') &&
+                            (size_pole[x_OU + 2][y_OU + 2] == ' ') &&
+                            ((x_OU + 2) < 8) && ((y_OU + 2) < 8) ||
+
+                            (size_pole[x_OU + 1][y_OU - 1] == 'Х') &&
+                            (size_pole[x_OU + 2][y_OU - 2] == ' ') &&
+                            ((x_OU + 2) < 8) && ((y_OU - 2) >= 0) ||
+
+                            (size_pole[x_OU - 1][y_OU + 1] == 'Х') &&
+                            (size_pole[x_OU - 2][y_OU + 2] == ' ') &&
+                            ((x_OU - 2) >= 0) && ((y_OU + 2) < 8) ||
+
+                            (size_pole[x_OU - 1][y_OU - 1] == 'Х') &&
+                            (size_pole[x_OU - 2][y_OU - 2] == ' ') &&
+                            ((x_OU - 2) >= 0) && ((y_OU - 2) >= 0))
+                        {
+                            xy_test = true;
+                            while (xy_test)
+                            {
+                                check_to_go(size_pole, '∞', 1);
+                                cout << "\t\t\t\t\t ’од чЄрными." << endl;
+                                cout << '\n' << "\t\t\t\t\t ¬ыберете шашку: ";
+                                cin >> y_test;
+                                cin >> x_test;
+
+                                for (int i = 1; x_IN <= 8; i++)
+                                {
+                                    if (x_test == (i + 48))
+                                    {
+                                        x_IN = i;
+                                        x_IN -= 1;
+                                        //cout << x_IN << endl;
+                                        break;
+                                    }
+                                }
+                                for (int i = 1; y_IN <= 8; i++)
+                                {
+                                    if (y_test == (i + 96))
+                                    {
+                                        y_IN = i;
+                                        y_IN -= 1;
+                                        //cout << y_IN << endl;
+                                        break;
+                                    }
+                                }
+                                if (((x_IN >= 0) && (x_IN <= 7)) && ((y_IN >= 0) && (y_IN <= 7)))
+                                {
+                                    if (size_pole[x_IN][y_IN] == 'ѓ')
+                                        xy_test = false;
+                                    else
+                                        xy_test = true;
+                                }
+                                else
+                                    xy_test = true;
+                            }
+
+                            cout << '\n' << "\t\t\t\t\t ¬ыберете куда сходить: ";
+                            cin >> y_test;
+                            cin >> x_test;
+                            for (int i = 1; x_OU <= 8; i++)
+                            {
+                                if (x_test == (i + 48))
+                                {
+                                    x_OU = i;
+                                    x_OU -= 1;
+                                    //cout << y_OU << endl;
+                                    break;
+                                }
+                            }
+                            for (int i = 1; y_OU <= 8; i++)
+                            {
+                                if (y_test == (i + 96))
+                                {
+                                    y_OU = i;
+                                    y_OU -= 1;
+                                    //cout << y_OU << endl;
+                                    break;
+                                }
+                            }
+                            if (x_IN > x_OU)
+                                xs = x_IN - 1;
+                            else
+                                xs = x_OU - 1;
+                            if (y_IN > y_OU)
+                                ys = y_IN - 1;
+                            else
+                                ys = y_OU - 1;
+                            if (size_pole[xs][ys] == 'Х')
+                            {
+                                size_pole[xs][ys] = ' ';
+                                swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
+                                *ptr_number_white -= 1;
+                                check_to_go(size_pole, '∞', 2);
+                                check_l = false;
+                            }
+                            multi_kill = true;
+                        }
+                        else
+                            multi_kill = false;
+                    }
                 }
                 else
-                {
                     xy_test = true;
-                }
             }
         }
     }

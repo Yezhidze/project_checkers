@@ -17,7 +17,6 @@ void showAsciiArt();
 void menu();
 void podmenu();
 void setting();
-void choosing_a_side();
 
 void checkers_pole();
 
@@ -199,7 +198,6 @@ int checkers_position(int size, char size_pole[][8], char* white_checkers, char*
         else if (player == '0')
             podmenu();
     }
-
     number = player - '0';
 
     if (number == 1)
