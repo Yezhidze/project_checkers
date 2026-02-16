@@ -50,6 +50,8 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
+            x_IN = 0;
+            y_IN = 0;
 
             for (int i = 1; x_IN <= 8; i++)
             {
@@ -115,6 +117,9 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                     cin >> y_test;
                     cin >> x_test;
+                    x_OU = 0;
+                    y_OU = 0;
+
                     for (int i = 1; x_OU <= 8; i++)
                     {
                         if (x_test == (i + 48))
@@ -176,7 +181,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                     *ptr_number_white -= 1;
-                    check_l = true;
+                    check_l = false;
                     bool  multi_kill{ true };
                     while (multi_kill)
                     {
@@ -201,10 +206,13 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                             while (xy_test)
                             {
                                 check_to_go(size_pole, '°', 1, ptr_check_number);
+
                                 cout << "\t\t\t\t\t Ход чёрными." << endl;
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
                                 cin >> x_test;
+                                x_IN = 0;
+                                y_IN = 0;
 
                                 for (int i = 1; x_IN <= 8; i++)
                                 {
@@ -240,6 +248,9 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                             cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                             cin >> y_test;
                             cin >> x_test;
+                            x_OU = 0;
+                            y_OU = 0;
+
                             for (int i = 1; x_OU <= 8; i++)
                             {
                                 if (x_test == (i + 48))
@@ -283,7 +294,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     }
                 }
                 else
-                    xy_test = true;
+                    check_l = true;
             }
         }
     }
@@ -299,6 +310,9 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
             cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
+            x_IN = 0;
+            y_IN = 0;
+
             for (int i = 1; x_IN <= 8; i++)
             {
                 if (x_test == (i + 48))
@@ -358,6 +372,9 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                 cin >> y_test;
                 cin >> x_test;
+                x_OU = 0;
+                y_OU = 0;
+
                 for (int i = 1; x_OU <= 8; i++)
                 {
                     if (x_test == (i + 48))
@@ -400,7 +417,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     check_l = false;
                 }
                 else
-                    xy_test = true;
+                    check_l = true;
             }
             else if (neighboring_cell == 1)
             {
@@ -441,10 +458,13 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                             while (xy_test)
                             {
                                 check_to_go(size_pole, '°', 1, ptr_check_number);
+
                                 cout << "\t\t\t\t\t Ход чёрными." << endl;
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
                                 cin >> x_test;
+                                x_IN = 0;
+                                y_IN = 0;
 
                                 for (int i = 1; x_IN <= 8; i++)
                                 {
@@ -480,6 +500,9 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                             cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                             cin >> y_test;
                             cin >> x_test;
+                            x_OU = 0;
+                            y_OU = 0;
+
                             for (int i = 1; x_OU <= 8; i++)
                             {
                                 if (x_test == (i + 48))
@@ -522,7 +545,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     }
                 }
                 else
-                    xy_test = true;
+                    check_l = true;
             }
         }
     }

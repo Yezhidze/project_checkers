@@ -50,6 +50,8 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
             cin >> y_test;
             cin >> x_test;
+            x_IN = 0;
+            y_IN = 0;
 
             for (int i = 1; x_IN <= 8; i++)
             {
@@ -110,39 +112,39 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         {
             while (xy_test)
             {
-                /*while (check_border)
-                {*/
-                    cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
-                    cin >> y_test;
-                    cin >> x_test;
-                    for (int i = 1; x_OU <= 8; i++)
+                cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
+                cin >> y_test;
+                cin >> x_test;
+                x_OU = 0;
+                y_OU = 0;
+
+                for (int i = 1; x_OU <= 8; i++)
+                {
+                    if (x_test == (i + 48))
                     {
-                        if (x_test == (i + 48))
-                        {
-                            x_OU = i;
-                            x_OU -= 1;
-                            //cout << x_OU << endl;
-                            break;
-                        }
+                        x_OU = i;
+                        x_OU -= 1;
+                        //cout << x_OU << endl;
+                        break;
                     }
-                    for (int i = 1; y_OU <= 8; i++)
+                }
+                for (int i = 1; y_OU <= 8; i++)
+                {
+                    if (y_test == (i + 96))
                     {
-                        if (y_test == (i + 96))
-                        {
-                            y_OU = i;
-                            y_OU -= 1;
-                            //cout << y_OU << endl;
-                            break;
-                        }
+                        y_OU = i;
+                        y_OU -= 1;
+                        //cout << y_OU << endl;
+                        break;
                     }
-                //}
-                    if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
-                        if (size_pole[x_OU][y_OU] == ' ')
-                            xy_test = false;
-                        else
-                            xy_test = true;
+                }
+                if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
+                    if (size_pole[x_OU][y_OU] == ' ')
+                        xy_test = false;
                     else
                         xy_test = true;
+                else
+                    xy_test = true;
             }
 
             check_to_go(size_pole, '•', 2, ptr_check_number);
@@ -176,7 +178,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     size_pole[xs][ys] = ' ';
                     swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                     *ptr_number_black -= 1;
-                    check_l = true;
+                    check_l = false;
                     bool multi_kill{ true };
                     while (multi_kill)
                     {
@@ -196,7 +198,6 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                             (size_pole[x_OU + 2][y_OU - 2] == ' ') &&
                             ((x_OU + 2) < 8) && ((y_OU - 2) >= 0))
                         {
-                            //check_to_go(size_pole, '•', 1);
                             xy_test = true;
                             while (xy_test)
                             {
@@ -205,6 +206,8 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
                                 cin >> x_test;
+                                x_IN = 0;
+                                y_IN = 0;
 
                                 for (int i = 1; x_IN <= 8; i++)
                                 {
@@ -240,6 +243,9 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                             cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                             cin >> y_test;
                             cin >> x_test;
+                            x_OU = 0;
+                            y_OU = 0;
+
                             for (int i = 1; x_OU <= 8; i++)
                             {
                                 if (x_test == (i + 48))
@@ -274,6 +280,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                                 swap(size_pole[x_OU][y_OU], size_pole[x_IN][y_IN]);
                                 *ptr_number_black -= 1;
                                 check_to_go(size_pole, '•', 2, ptr_check_number);
+                                check_l = false;
                             }
                             multi_kill = true;
                         }
@@ -282,7 +289,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     }
                 }
                 else
-                    xy_test = true;
+                    check_l = true;
             }
         }
         // комбинация за белых для проверки множественного поедания
@@ -300,6 +307,9 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                 cin >> y_test;
                 cin >> x_test;
+                x_IN = 0;
+                y_IN = 0;
+
                 for (int i = 1; x_IN <= 8; i++)
                 {
                     if (x_test == (i + 48))
@@ -359,6 +369,9 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                 cin >> y_test;
                 cin >> x_test;
+                x_OU = 0;
+                y_OU = 0;
+
                 for (int i = 1; x_OU <= 8; i++)
                 {
                     if (x_test == (i + 48))
@@ -403,7 +416,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     check_l = false;
                 }
                 else
-                    xy_test = true;
+                    check_l = true;
             }
             else if (neighboring_cell == 1)
             {
@@ -440,7 +453,6 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                             (size_pole[x_OU + 2][y_OU - 2] == ' ') &&
                             ((x_OU + 2) < 8) && ((y_OU - 2) >= 0))
                         {
-                            //check_to_go(size_pole, '•', 1);
                             xy_test = true;
                             while (xy_test)
                             {
@@ -449,6 +461,8 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                                 cout << '\n' << "\t\t\t\t\t Выберете шашку: ";
                                 cin >> y_test;
                                 cin >> x_test;
+                                x_IN = 0;
+                                y_IN = 0;
 
                                 for (int i = 1; x_IN <= 8; i++)
                                 {
@@ -484,6 +498,9 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                             cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
                             cin >> y_test;
                             cin >> x_test;
+                            x_OU = 0;
+                            y_OU = 0;
+
                             for (int i = 1; x_OU <= 8; i++)
                             {
                                 if (x_test == (i + 48))
@@ -526,7 +543,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                     }
                 }
                 else
-                    xy_test = true;
+                    check_l = true;
             }
         }
     }
