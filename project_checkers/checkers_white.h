@@ -33,7 +33,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
 
     if (check == 1)
     {
-        swap(size_pole[5][2], size_pole[4][1]);
+        //swap(size_pole[5][2], size_pole[4][1]);
         //swap(size_pole[2][1], size_pole[4][1]);
         cout << "\n\t\t\t\t\t Вы играете белыми (снизу)" << endl;
 
