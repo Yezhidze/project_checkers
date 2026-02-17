@@ -145,7 +145,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     {
                         if (size_pole[x_OU][y_OU] == ' ')
                         {
-                            if (x_IN < x_OU)
+                            if ((x_IN < x_OU)||(neighboring_cell == 1))
                                 xy_test = false;
                             else
                                 xy_test = true;
@@ -305,6 +305,11 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     check_l = true;
             }
         }
+        for (int i = 0; i < 8; i++)
+        {
+            if (size_pole[7][i] == '°')
+                size_pole[7][i] = '¤';
+        }
     }
     else if (check == 2)
     {
@@ -405,7 +410,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 {
                     if (size_pole[x_OU][y_OU] == ' ')
                     {
-                        if (x_IN > x_OU)
+                        if ((x_IN > x_OU) || (neighboring_cell == 1))
                             xy_test = false;
                         else
                             xy_test = true;
@@ -560,6 +565,11 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 else
                     check_l = true;
             }
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            if (size_pole[0][i] == '°')
+                size_pole[0][i] = '¤';
         }
     }
 }  

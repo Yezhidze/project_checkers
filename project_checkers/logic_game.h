@@ -13,32 +13,32 @@ char motion = '¯';
 char *ptr_motion = &motion;
 int eating{ 0 };
 
-void check_to_damka(char *size_pole, int check, char design_check )
-{
-
-     for (int i = 0; i < 8 , design_check == '•', check == 1; i++)
-     {
-         if (*(size_pole + i) == design_check)
-             *(size_pole + i) = '*';
-     }
-     /*for (int i = 0; i < 8, design_check == '•', check == 2 ; i++)
-     {
-         if (size_pole[7][i] == design_check)
-             size_pole[7][i] = '*';
-     }
-     for (int i = 0; i < 8, design_check == '°', check == 1; i++)
-     {
-         if (size_pole[7][i] == design_check)
-             size_pole[7][i] = '¤';
-     }
-     for (int i = 0; i < 8, design_check == '°', check == 2; i++)
-     {
-         if (size_pole[0][i] == design_check)
-             size_pole[0][i] = '¤';
-     }*/
-   
-
-}
+//void check_to_damka(char *size_pole, int check, char design_check )
+//{
+//
+//     for (int i = 0; i < 8 , design_check == '•', check == 1; i++)
+//     {
+//         if (*(size_pole + i) == design_check)
+//             *(size_pole + i) = '*';
+//     }
+//     for (int i = 0; i < 8, design_check == '•', check == 2 ; i++)
+//     {
+//         if (size_pole[7][i] == design_check)
+//             size_pole[7][i] = '*';
+//     }
+//     for (int i = 0; i < 8, design_check == '°', check == 1; i++)
+//     {
+//         if (size_pole[7][i] == design_check)
+//             size_pole[7][i] = '¤';
+//     }
+//     for (int i = 0; i < 8, design_check == '°', check == 2; i++)
+//     {
+//         if (size_pole[0][i] == design_check)
+//             size_pole[0][i] = '¤';
+//     }
+//   
+//
+//}
 
 void return_to_go(char size_pole[][8], char check)
 {

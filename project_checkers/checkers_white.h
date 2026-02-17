@@ -33,6 +33,8 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
 
     if (check == 1)
     {
+        swap(size_pole[5][2], size_pole[4][1]);
+        //swap(size_pole[2][1], size_pole[4][1]);
         cout << "\n\t\t\t\t\t Вы играете белыми (снизу)" << endl;
 
         /*if (eat1 == 1)
@@ -142,7 +144,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 {
                     if (size_pole[x_OU][y_OU] == ' ')
                     {
-                        if (x_IN > x_OU)
+                        if ((x_IN > x_OU) || (neighboring_cell == 1))
                             xy_test = false;
                         else
                             xy_test = true;
@@ -378,7 +380,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         // комбинация за белых для проверки множественного поедания
         // a6b5d3e4g6h5b3c4b5d3d3f5a2b3b7a6b3c4c8b7h3g4f5h3e2d3h7g6d3e4g8h7d1e2c6b5f3g4
         //check_to_damka(size_pole[0], check, '•');
-
+        //swap(size_pole[7][0],size_pole[0][1]);
         for (int i = 0; i < 8 ; i++)
         {
             if (size_pole[0][i] == '•')
@@ -486,7 +488,7 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 {
                     if (size_pole[x_OU][y_OU] == ' ')
                     {
-                        if (x_IN < x_OU)
+                        if ((x_IN < x_OU) || (neighboring_cell == 1))
                             xy_test = false;
                         else
                             xy_test = true;
@@ -646,5 +648,11 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
             if (size_pole[7][i] == '•')
                 size_pole[7][i] = '*';
         }
+        for (int i = 0; i < 8; i++)
+        {
+            if (size_pole[7][i] == '•')
+                size_pole[7][i] = '*';
+        }
     }
+    
 }
