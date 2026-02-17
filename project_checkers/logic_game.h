@@ -265,3 +265,47 @@ void check_to_go(char size_pole[][8], char check, int control, int* ptr_check_nu
             return_to_go(size_pole, check);
     }
 }
+
+void check_will_go(int* x_OU, int* y_OU, char size_pole[][8])
+{
+    bool xy_test{ true };
+    int y_test, x_test;
+    while (xy_test)
+    {
+        cout << '\n' << "\t\t\t\t\t Выберете куда сходить: ";
+        cin >> y_test;
+        cin >> x_test;
+        *x_OU = 0;
+        *y_OU = 0;
+
+        for (int i = 1; *x_OU <= 8; i++)
+        {
+            if (x_test == (i + 48))
+            {
+                *x_OU = i;
+                *x_OU -= 1;
+                //cout << x_OU << endl;
+                break;
+            }
+        }
+        for (int i = 1; *y_OU <= 8; i++)
+        {
+            if (y_test == (i + 96))
+            {
+                *y_OU = i;
+                *y_OU -= 1;
+                //cout << y_OU << endl;
+                break;
+            }
+        }
+        if (((*x_OU >= 0) && (*x_OU <= 7)) && ((*y_OU >= 0) && (*y_OU <= 7)))
+        {
+            if (size_pole[*x_OU][*y_OU] == ' ')
+                xy_test = false;
+            else
+                xy_test = true;
+        }
+        else
+            xy_test = true;
+    }
+}

@@ -142,10 +142,17 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                     }
                 //}
                     if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
+                    {
                         if (size_pole[x_OU][y_OU] == ' ')
-                            xy_test = false;
+                        {
+                            if (x_IN < x_OU)
+                                xy_test = false;
+                            else
+                                xy_test = true;
+                        }
                         else
                             xy_test = true;
+                    }
                     else
                         xy_test = true;
             }
@@ -301,7 +308,7 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
     }
     else if (check == 2)
     {
-        cout << "\n\t\t\t\t\t Вы играете чёрными  (сверху)" << endl;
+        cout << "\n\t\t\t\t\t Вы играете чёрными  (снизу)" << endl;
         bool xy_test = true;
         while (xy_test)
         {
@@ -397,7 +404,12 @@ void motion_black_checkers(char* white_checkers, char* black_checkers, int size,
                 if (((x_OU >= 0) && (x_OU <= 7)) && ((y_OU >= 0) && (y_OU <= 7)))
                 {
                     if (size_pole[x_OU][y_OU] == ' ')
-                        xy_test = false;
+                    {
+                        if (x_IN > x_OU)
+                            xy_test = false;
+                        else
+                            xy_test = true;
+                    }
                     else
                         xy_test = true;
                 }

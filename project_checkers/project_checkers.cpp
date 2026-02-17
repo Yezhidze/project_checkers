@@ -10,7 +10,7 @@ void showAsciiArt();
 
 int main()
 {
-    //showAsciiArt();
+    showAsciiArt();
 
     /*SetConsoleOutputCP(65001); // UTF-8
     SetConsoleCP(65001);*/
