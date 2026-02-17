@@ -377,6 +377,13 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
         }
         // комбинация за белых для проверки множественного поедания
         // a6b5d3e4g6h5b3c4b5d3d3f5a2b3b7a6b3c4c8b7h3g4f5h3e2d3h7g6d3e4g8h7d1e2c6b5f3g4
+        //check_to_damka(size_pole[0], check, '•');
+
+        for (int i = 0; i < 8 ; i++)
+        {
+            if (size_pole[0][i] == '•')
+                size_pole[0][i] = '*';
+        }
     } 
     else if (check == 2) 
     {
@@ -633,6 +640,11 @@ void motion_white_checkers(char* white_checkers,char* black_checkers, int size, 
                 else
                     check_l = true;
             }
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            if (size_pole[7][i] == '•')
+                size_pole[7][i] = '*';
         }
     }
 }
