@@ -63,7 +63,7 @@ void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 			if (size_pole[i][j] == check || size_pole[i][j] == *ptr_motion)
 			{
                 if ((size_pole[i - 1][j + 1] == '∞') &&
-                    (size_pole[i - 2][j + 2] == ' ') &&         // код исправил  »–»ЋЋ проверь!!!      
+                    (size_pole[i - 2][j + 2] == ' ') &&  
                    ((i - 2) >= 0) && ((j + 2) < 8))
                 {
                     size_pole[i][j] = *ptr_motion;
@@ -155,7 +155,7 @@ void white_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 	eating = 0;
 }
 
-void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_number)//, int number
+void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_number)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -165,7 +165,7 @@ void black_to_go(char size_pole[][8], char check, int control, int *ptr_check_nu
 			{
 				if ((size_pole[i + 1][j + 1] == 'Х') &&
                     (size_pole[i + 2][j + 2] == ' ') &&
-                   ((i + 2) < 8) && ((j + 2) < 8))              // код исправил  »–»ЋЋ проверь!!!
+                   ((i + 2) < 8) && ((j + 2) < 8))              
 				{
 					size_pole[i][j] = *ptr_motion;
 					eating++;
@@ -267,20 +267,20 @@ int check_selection(int *ptr_check_number)
         return number;
 }
 
-void check_to_go(char size_pole[][8], char check, int control, int* ptr_check_number)  //переделать передачу переменной дл€ получени€ значени€ number из checkers_position()
+void check_to_go(char size_pole[][8], char check, int control, int* ptr_check_number) 
 {
     int numbers = *ptr_check_number;
 	if (control == 1)
 	{
 		if (check == 'Х')
 		{
-			white_to_go(size_pole, check, control, ptr_check_number);//, number
+			white_to_go(size_pole, check, control, ptr_check_number);
 			print_pole(8, size_pole);
 		}
 
 		else if (check == '∞')
 		{
-			black_to_go(size_pole, check, control, ptr_check_number);//, number
+			black_to_go(size_pole, check, control, ptr_check_number);
 			print_pole(8, size_pole);
 		}
 	}
@@ -311,7 +311,6 @@ void check_will_go(int* x_OU, int* y_OU, char size_pole[][8])
             {
                 *x_OU = i;
                 *x_OU -= 1;
-                //cout << x_OU << endl;
                 break;
             }
         }
@@ -321,7 +320,6 @@ void check_will_go(int* x_OU, int* y_OU, char size_pole[][8])
             {
                 *y_OU = i;
                 *y_OU -= 1;
-                //cout << y_OU << endl;
                 break;
             }
         }
